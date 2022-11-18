@@ -1,0 +1,28 @@
+$light_bg: #04AA6D;
+$button_bg: $light_bg;
+$button_hover_bg: #038052;
+$button_active_bg: #6377ba;
+$nav_footer_bg: #333; 
+
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+h1.title {
+	font-size: 20px;
+	font-weight: 600;
+
+	&::first-letter {
+		font-size: 24px;
+		font-weight: 700;
+	}
+}
+
