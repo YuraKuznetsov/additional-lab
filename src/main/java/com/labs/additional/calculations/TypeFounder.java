@@ -1,30 +1,43 @@
 package com.labs.additional.calculations;
 
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class TypeFounder {
-    private Object request;
+    private final Map<String, String> userCoefficients;
     private double a11, a12, a13, a14, a22, a23, a24, a33, a34, a44;
     private double[][] matrix3 = new double[3][3], matrix4 = new double[4][4];
     private double I1, I2, I3, I4, K2, K3;
-    private double t1, t2, t3;  // cubic roots
+    private double lambda1, lambda2, lambda3;
     private String userEquation = "", myType, type;
 
-    public TypeFounder(Object request) {
-        this.request = request;
+    public TypeFounder(Map<String, String> userCoefficients) {
+        this.userCoefficients = userCoefficients;
+    }
+
+    public void makeCalculations() {
         setCoefficients();
         setMatrices();
         defineI();
         defineK();
-        solveCubic();
-        findUserEquation();
-        findMyType();
-        findType();
+        calcLambdas();
     }
 
     private void setCoefficients() {
+        a11 = stringToDouble(userCoefficients.get("a11"));
+        a12 = stringToDouble(userCoefficients.get("a12")) / 2;
+        a13 = stringToDouble(userCoefficients.get("a13")) / 2;
+        a14 = stringToDouble(userCoefficients.get("a14")) / 2;
+        a22 = stringToDouble(userCoefficients.get("a22"));
+        a23 = stringToDouble(userCoefficients.get("a23")) / 2;
+        a24 = stringToDouble(userCoefficients.get("a24")) / 2;
+        a33 = stringToDouble(userCoefficients.get("a33"));
+        a34 = stringToDouble(userCoefficients.get("a34")) / 2;
+        a44 = stringToDouble(userCoefficients.get("a44"));
+    }
 
+    private double stringToDouble(String string) {
+        if (string.isEmpty()) return 0;
+        return Double.parseDouble(string);
     }
 
     private void setMatrices() {
@@ -56,109 +69,115 @@ public class TypeFounder {
                 + Matrix.getDeterminant(Matrix.getMinor(matrix4, 1, 1));
     }
 
-    private void solveCubic() {
+    private void calcLambdas() {
         List<Double> cubicRoots = Equation.cubicEquation(1, -I1, I2, -I3);
-        // Delete zero roots
-        for (int i = 0; i < cubicRoots.size(); i++) {
-            if (cubicRoots.get(i) == 0.0) {
-                cubicRoots.remove(i);
+        removeZeroElements(cubicRoots);
+
+        lambda1 = cubicRoots.get(0);
+        if (cubicRoots.size() == 2) {
+            lambda2 = cubicRoots.get(1);
+        }
+        if (cubicRoots.size() == 3) {
+            lambda2 = cubicRoots.get(1);
+            lambda3 = cubicRoots.get(2);
+        }
+    }
+
+    private void removeZeroElements(List<Double> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == 0.0) {
+                list.remove(i);
                 i--;
             }
         }
-        t1 = cubicRoots.get(0);
-        if (cubicRoots.size() == 2) {
-            t2 = cubicRoots.get(1);
-        }
-        if (cubicRoots.size() == 3) {
-            t2 = cubicRoots.get(1);
-            t3 = cubicRoots.get(2);
+    }
+
+    public String getCanonicalEquation() {
+
+        double coefficient;
+        double rightPart;
+        switch (getFamilyType()) {
+            case "full square":
+                coefficient = I4/I3;
+                rightPart = coefficient != 0 ? -coefficient/coefficient : 0;
+                return lambda1 /coefficient + "x^2 + " + lambda2 /coefficient + "y^2 + " + lambda3 /coefficient + "z^2 = " + rightPart;
+            case "cylinder":
+                coefficient = K3/I2;
+                rightPart = coefficient != 0 ? -coefficient/coefficient : 0;
+                return lambda1 /coefficient + "x^2 + " + lambda2 /coefficient + "y^2 = " + rightPart;
+            case "paraboloid":
+                return lambda1 + "x^2 + " + lambda2 + "y^2 + " + 2 * Math.sqrt(-I4/I2) + "z = 0";
+            case "paraboloid cylinder":
+                return lambda1 + "x^2 + " + 2 * Math.sqrt(-K3/I1) + "y = 0";
+            default:
+                throw new NoSuchElementException("Щось не то...");
         }
     }
 
-    private void findUserEquation() {
-        userEquation += "1";
-        System.out.println(userEquation);
-    }
-
-    private void findMyType() {
+    private String getFamilyType() {
+        // Скрізь квадрати
         if (I3 != 0) {
-            // Скрізь квадрати
-            myType = "full square";
+            return "full square";
         }
         // Циліндри, без змінної z
         if (I3 == 0 && I4 == 0 && I2 != 0) {
-            myType = "cylinder";
+            return "cylinder";
         }
 
         // Параболоїди, просто z без квадрату
         if (I3 == 0 && I2 !=0 && I4 != 0) {
-            myType = "paraboloid";
+            return "paraboloid";
         }
 
         // Параболічний циліндр, без z та просто y без квадрату
-        if (I2 == 0 && I3 == 0 && I4 == 0 && I1 != 0 && K3 != 0) {
-            myType = "paraboloid cylinder";
+        if (I1 != 0 && I2 == 0 && I3 == 0 && I4 == 0 && K3 != 0) {
+            return  "paraboloid cylinder";
         }
+
+        return "Not a second-order surface";
     }
 
-    private void findType() {
-
+    private String findParaboloid() {
+        if (Math.signum(lambda1) != Math.signum(lambda2)) return "Гіперболічний параболоїд";
+        if (lambda1 != lambda2) return "Еліптичний параболоїд";
+        return "Коловий параболоїд";
     }
 
-    public double getI1() {
-        return I1;
+    private String findCylinder() {
+        if (Math.signum(lambda1) != Math.signum(lambda2)) return "Гіперболічний циліндр";
+        if (lambda1 != lambda2) return "Еліптичний циліндр";
+        return "Коловий циліндр";
     }
 
-    public double getI2() {
-        return I2;
-    }
+    private String findFullSquare() {
+        double sign1 = Math.signum(lambda1), sign2 = Math.signum(lambda2), sign3 = Math.signum(lambda3);
 
-    public double getI3() {
-        return I3;
-    }
-
-    public double getI4() {
-        return I4;
-    }
-
-    public double getK2() {
-        return K2;
-    }
-
-    public double getK3() {
-        return K3;
-    }
-
-    public String getCanonicalEquation() {
-        String canonicalEquation;
-        double coefficient;
-        double rightPart;
-        switch (myType) {
-            case "full square":
-                coefficient = I4/I3;
-                rightPart = coefficient != 0 ? -coefficient/coefficient : 0;
-                canonicalEquation = t1/coefficient + "x^2 + " + t2/coefficient + "y^2 + " + t3/coefficient + "z^2 = " + rightPart;
-                break;
-            case "cylinder":
-                coefficient = K3/I2;
-                rightPart = coefficient != 0 ? -coefficient/coefficient : 0;
-                canonicalEquation = t1/coefficient + "x^2 + " + t2/coefficient + "y^2 = " + rightPart;
-                break;
-            case "paraboloid":
-                canonicalEquation = t1 + "x^2 + " + t2 + "y^2 + " + 2 * Math.sqrt(-I4/I2) + "z = 0";
-                break;
-            case "paraboloid cylinder":
-                canonicalEquation = t1 + "x^2 + " + 2 * Math.sqrt(-K3/I1) + "y = 0";
-                break;
-            default:
-                throw new NoSuchElementException("Щось не то...");
+        if (sign1 == sign2 && sign1 == sign3) {
+            return "Еліпсоїд";
         }
-        return canonicalEquation;
+
+        if (I4 == 0) {
+            return "Конус";
+        }
+
+        return "Гіперболоїд";
+
     }
+
 
 
     public String getType() {
-        return type;
-    }
 
+        switch (getFamilyType()) {
+            case "paraboloid cylinder":
+                return "Параболічний циліндр";
+            case "paraboloid":
+                return findParaboloid();
+            case "cylinder":
+                return findCylinder();
+            case "full square":
+                return findFullSquare();
+        }
+        return "Площина";
+    }
 }

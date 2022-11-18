@@ -1,6 +1,8 @@
 package com.labs.additional;
 
+import com.labs.additional.calculations.TypeFounder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,7 +16,11 @@ public class MainController {
         return "index";
     }
     @GetMapping("/result")
-    public String result(@RequestParam Map<String, String> request) {
+    public String result(@RequestParam Map<String, String> request, Model model) {
+        TypeFounder typeFounder = new TypeFounder(request);
+        typeFounder.makeCalculations();
+        model.addAttribute("type", typeFounder.getType());
+        //model.addAttribute("equation", typeFounder.getCanonicalEquation());
         return "result";
     }
 }
