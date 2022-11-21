@@ -15,12 +15,12 @@ public class MainController {
     public String index() {
         return "index";
     }
+
     @GetMapping("/result")
     public String result(@RequestParam Map<String, String> request, Model model) {
         TypeFounder typeFounder = new TypeFounder(request);
         typeFounder.makeCalculations();
-        model.addAttribute("type", typeFounder.getType());
-        //model.addAttribute("equation", typeFounder.getCanonicalEquation());
+        model.addAttribute("founder", typeFounder);
         return "result";
     }
 }

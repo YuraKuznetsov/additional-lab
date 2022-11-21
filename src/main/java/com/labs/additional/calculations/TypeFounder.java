@@ -8,7 +8,6 @@ public class TypeFounder {
     private double[][] matrix3 = new double[3][3], matrix4 = new double[4][4];
     private double I1, I2, I3, I4, K2, K3;
     private double lambda1, lambda2, lambda3;
-    private String userEquation = "", myType, type;
 
     public TypeFounder(Map<String, String> userCoefficients) {
         this.userCoefficients = userCoefficients;
@@ -164,8 +163,6 @@ public class TypeFounder {
 
     }
 
-
-
     public String getType() {
 
         switch (getFamilyType()) {
@@ -179,5 +176,41 @@ public class TypeFounder {
                 return findFullSquare();
         }
         return "Площина";
+    }
+
+    public double getI1() {
+        return I1;
+    }
+
+    public double getI2() {
+        return I2;
+    }
+
+    public double getI3() {
+        return I3;
+    }
+
+    public double getI4() {
+        return I4;
+    }
+
+    public double getK2() {
+        return K2;
+    }
+
+    public double getK3() {
+        return K3;
+    }
+
+    public double getLambda1() {
+        return lambda1;
+    }
+
+    public double getLambda2() {
+        return lambda2;
+    }
+
+    public double getLambda3() {
+        return lambda3;
     }
 }

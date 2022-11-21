@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/result.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav__list">
+                <li><a href="" class="nav__link">Головна</a></li>
+                <li><a href="" class="nav__link">Доступні поверхні</a></li>
+                <li><a href="" class="nav__link">Визначені поверхні</a></li>
+                <li><a href="" class="nav__link">Алгоритм</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <h1 class="title">
+                Результат визначення
+            </h1>
+            <div class="info">
+                <p class="text">
+                    Введене рівняння:
+                </p>
+                <p class="text">
+                    Коефіціенти I та K: <br><br>
+                    I<span class="small">1</span> = ;
+                    I<span class="small">2</span> = ;
+                    I<span class="small">3</span> = ;
+                    I<span class="small">4</span> = ;
+                    K<span class="small">2</span> = ;
+                    K<span class="small">3</span> = ;
+                </p>
+                <p class="text">
+                    Кубічне рівняння: <br><br>
+                    λ<span class="small">1</span> = ; λ<span class="small">2</span> = ; λ<span class="small">3</span> =
+                </p>
+                <p class="text">
+                    Канонічне рівняння:
+                </p>
+                <p class="text">
+                    Тип поверхні: <span th:text="${founder.getType()}"></span>
+                </p>
+                <p class="text">
+                    Приклад зображення:
+                </p>
+            </div>
+
+
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__text">
+                Лабораторна робота Кузнецова Юрія, жодні права не захищені
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
