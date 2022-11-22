@@ -1,9 +1,9 @@
-package com.labs.additional.calculations;
+package com.labs.additional.surface.calculations;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class Equation {
+public class EquationSolver {
 
     static public List<Double> cubicEquation(double d, double a, double b, double c) {
 
