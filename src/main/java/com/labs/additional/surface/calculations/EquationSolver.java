@@ -23,24 +23,29 @@ public class EquationSolver {
 
         if (D > 0) {
             x1 = Math.cbrt(-q / 2 + Math.sqrt(D)) + Math.cbrt(-q / 2 - Math.sqrt(D)) - a / 3;
-            if (Math.round(x1) != 0) {
-                x1 = Math.round(x1 * 100);
-                result.add(x1 / 100);
+
+            x1 = Math.round(x1 * 100);
+            x1 /= 100;
+            if (x1 != 0) {
+                result.add(x1);
             }
         }
         else if (D == 0) {
             x1 = -2 * Math.cbrt(q / 2) - a / 3;
             x2 = Math.cbrt(q / 2) - a / 3;
 
-            if (Math.round(x1) != 0) {
-                x1 = Math.round(x1 * 100);
-                result.add(x1 / 100);
+            x1 = Math.round(x1 * 100);
+            x1 /= 100;
+            x2 = Math.round(x2 * 100);
+            x2 /= 100;
+
+            if (x1 != 0) {
+                result.add(x1);
             }
             // We have 2 same roots
-            if (Math.round(x2) != 0) {
-                x2 = Math.round(x2 * 100);
-                result.add(x2 / 100);
-                result.add(x2 / 100);
+            if (x2 != 0) {
+                result.add(x2);
+                result.add(x2);
             }
         }
         else {
@@ -48,17 +53,22 @@ public class EquationSolver {
             x2 = (-2.0 / Math.sqrt(3)) * (Math.sqrt(-p) * Math.sin((1 / 3.0) * Math.asin(((3 * Math.sqrt(3) * q) / (2 * Math.pow(Math.pow(-p, (double) 1 / 2), 3)))) + (Math.PI / 3))) - (a / 3.0);
             x3 = (2.0 / Math.sqrt(3)) * (Math.sqrt(-p) * Math.cos((1 / 3.0) * Math.asin(((3 * Math.sqrt(3) * q) / (2 * Math.pow(Math.pow(-p, (double) 1 / 2), 3)))) + (Math.PI / 6))) - (a / 3.0);
 
-            if (Math.round(x1) != 0) {
-                x1 = Math.round(x1 * 100);
-                result.add(x1 / 100);
+
+            x1 = Math.round(x1 * 100);
+            x1 /= 100;
+            x2 = Math.round(x2 * 100);
+            x2 /= 100;
+            x3 = Math.round(x3 * 100);
+            x3 /= 100;
+
+            if (x1 != 0) {
+                result.add(x1);
             }
-            if (Math.round(x2) != 0) {
-                x2 = Math.round(x2 * 100);
-                result.add(x2 / 100);
+            if (x2 != 0) {
+                result.add(x2);
             }
-            if (Math.round(x3) != 0) {
-                x3 = Math.round(x3 * 100);
-                result.add(x3 / 100);
+            if (x3 != 0) {
+                result.add(x3);
             }
         }
 
