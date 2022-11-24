@@ -18,9 +18,9 @@ public class Calculator {
         defineK();
         calcLambdas();
         return Map.of(
-                "I1", I1, "I2", I2, "I3", I3, "I4", I4,
-                "K2", K2, "K3", K3,
-                "lambda1", lambda1, "lambda2", lambda2, "lambda3", lambda3);
+                "I1", round(I1), "I2", round(I2), "I3", round(I3), "I4", round(I4),
+                "K2", round(K2), "K3", round(K3),
+                "lambda1", round(lambda1), "lambda2", round(lambda2), "lambda3", round(lambda3));
     }
 
     private void fillMatrices() {
@@ -72,5 +72,11 @@ public class Calculator {
         if (cubicRoots.size() == 3) {
             lambda3 = cubicRoots.get(2);
         }
+    }
+
+    public static double round(double value) {
+        value = Math.round(value * 100);
+        value /= 100;
+        return value;
     }
 }
