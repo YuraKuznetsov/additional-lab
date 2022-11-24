@@ -2,29 +2,45 @@ package com.labs.additional.surface.calculations;
 
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class EquationSolverTest {
 
     @Test
-    void cubicEquation() {
-        List<Double> expected1 = List.of();
-        List<Double> result1 = EquationSolver.cubicEquation(1.0, 0.0, 0.0, 0.0);
-        assertEquals(expected1, result1);
-
-        List<Double> expected2 = List.of(-20.0);
-        List<Double> result2 = EquationSolver.cubicEquation(1.0, 20.0, 0.0, 0.0);
-        assertEquals(expected2, result2);
-
-        List<Double> expected3 = List.of(-3.56, 0.56);
-        List<Double> result3 = EquationSolver.cubicEquation(1.0, 3.0, -2.0, 0.0);
-        assertEquals(expected3, result3);
-
-        List<Double> expected4 = List.of(5.0, 3.0, 3.0);
-        List<Double> result4 = EquationSolver.cubicEquation(1.0, -11.0, 39.0, -45);
-        assertEquals(expected4, result4);
+    void isEmpty_whenAllCubicCoefficientsAreZero() {
+        List<Double> expected = List.of();
+        List<Double> result = EquationSolver.cubicEquation(1.0, 0.0, 0.0, 0.0);
+        assertEquals(expected, result);
     }
+
+    @Test
+    void oneCubicNotZeroRoot_whenGivenOnlyNotZeroI1() {
+        for (double I1 = -10; I1 <= 10; I1 += .5) {
+            if (I1 == 0) continue;
+            List<Double> expected = List.of(-I1);
+            List<Double> result = EquationSolver.cubicEquation(1.0, I1, 0.0, 0.0);
+
+            assertEquals(expected, result);
+        }
+    }
+
+    @Test
+    void threeCubicNotZeroRoots_whenNotZeroI3() {
+        final double I3 = 5.1;
+        final int expectedSize = 3;
+        List<Double> resul = EquationSolver.cubicEquation(1.0, 13.4, -22.5, I3);
+        assertEquals(expectedSize, resul.size());
+    }
+
+    @Test
+    void lessThanThreeCubicRoots_whenZeroI3() {
+        final double I3 = 0;
+        List<Double> resul = EquationSolver.cubicEquation(1.0, 13.4, -22.5, I3);
+        assertTrue(resul.size() < 3);
+    }
+
 }

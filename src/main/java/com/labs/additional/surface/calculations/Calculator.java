@@ -62,23 +62,15 @@ public class Calculator {
 
     private void calcLambdas() {
         List<Double> cubicRoots = EquationSolver.cubicEquation(1, -I1, I2, -I3);
-        removeZeroElements(cubicRoots);
 
-        lambda1 = cubicRoots.get(0);
+        if (cubicRoots.size() >= 1) {
+            lambda1 = cubicRoots.get(0);
+        }
         if (cubicRoots.size() >= 2) {
             lambda2 = cubicRoots.get(1);
         }
         if (cubicRoots.size() == 3) {
             lambda3 = cubicRoots.get(2);
-        }
-    }
-
-    private void removeZeroElements(List<Double> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) == 0.0) {
-                list.remove(i);
-                i--;
-            }
         }
     }
 }
