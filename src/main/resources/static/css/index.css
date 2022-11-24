@@ -98,6 +98,14 @@ body {
   margin: 0 auto;
 }
 
+main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: 40px 0;
+  background: rgb(230, 228, 228);
+}
+
 h1.title {
   font-size: 20px;
   font-weight: 600;
@@ -133,35 +141,6 @@ h1.title::first-letter {
   background-color: #04AA6D;
 }
 
-main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  padding: 40px 0;
-  background: rgb(230, 228, 228);
-}
-
-.form {
-  margin-top: 50px;
-  font-size: 18px;
-}
-.form input {
-  width: 45px;
-  font-size: 15px;
-  margin-right: 5px;
-}
-.form input:focus {
-  -webkit-box-shadow: 0 0 7px black;
-          box-shadow: 0 0 7px black;
-}
-.form__button {
-  margin-top: 30px;
-}
-
-p.text {
-  margin-top: 50px;
-}
-
 .footer {
   color: white;
   padding: 14px 0;
@@ -185,4 +164,25 @@ p.text {
 .button:active {
   top: 4px;
   background: #6377ba;
+}
+
+.form {
+  margin-top: 50px;
+  font-size: 18px;
+}
+.form input {
+  width: 45px;
+  font-size: 15px;
+  margin-right: 5px;
+}
+.form input:focus {
+  -webkit-box-shadow: 0 0 7px black;
+          box-shadow: 0 0 7px black;
+}
+.form__button {
+  margin-top: 30px;
+}
+
+p.text {
+  margin-top: 50px;
 }

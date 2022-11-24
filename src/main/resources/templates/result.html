@@ -12,7 +12,7 @@
     <nav class="nav">
         <div class="container">
             <ul class="nav__list">
-                <li><a href="" class="nav__link">Головна</a></li>
+                <li><a href="/" class="nav__link">Головна</a></li>
                 <li><a href="" class="nav__link">Доступні поверхні</a></li>
                 <li><a href="" class="nav__link">Визначені поверхні</a></li>
                 <li><a href="" class="nav__link">Алгоритм</a></li>
@@ -26,7 +26,7 @@
             </h1>
             <div class="info">
                 <p class="text">
-                    Введене рівняння:
+                    Введене рівняння: <span class="important" th:text="${userEquation}"></span>
                 </p>
                 <p class="text">
                     Коефіціенти I та K: <br><br>
@@ -44,10 +44,10 @@
                     λ<span class="small">3</span> = <span th:text="${values.lambda3}"></span>
                 </p>
                 <p class="text">
-                    Канонічне рівняння: <span th:text="${canonical}"></span>
+                    Канонічне рівняння: <span class="important" th:text="${canonical}"></span>
                 </p>
                 <p class="text">
-                    Тип поверхні: <span th:text="${type}"></span>
+                    Тип поверхні: <span class="answer" th:text="${type}"></span>
                 </p>
                 <p class="text">
                     Приклад зображення:

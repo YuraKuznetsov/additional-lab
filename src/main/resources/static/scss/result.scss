@@ -10,3 +10,15 @@ p.text {
 span.small {
     font-size: 13px;
 }
+
+span.important {
+    color: green;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+span.answer {
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+}
