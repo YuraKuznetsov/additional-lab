@@ -3,21 +3,20 @@ package com.labs.additional.surface;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class CoefficientParser {
     private static final List<String> notDividedValues = List.of("a11", "a22", "a33", "a44");
     static public Map<String, Double> getCoefficients(Map<String, String> request) {
         Map<String, Double> coefficients = new HashMap<>();
-        Set<String> requestKeys = request.keySet();
 
-        for (String key : requestKeys) {
+        for (String key : request.keySet()) {
             if (notDividedValues.contains(key)) {
                 coefficients.put(key, stringToDouble(request.get(key)));
             } else {
                 coefficients.put(key, stringToDouble(request.get(key)) / 2);
             }
         }
+
         return coefficients;
     }
 
