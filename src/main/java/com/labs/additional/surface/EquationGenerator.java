@@ -1,5 +1,6 @@
 package com.labs.additional.surface;
 
+import com.labs.additional.surface.calculations.Calculator;
 import com.labs.additional.surface.type.WideSurfaceType;
 
 import java.util.Map;
@@ -12,23 +13,39 @@ public class EquationGenerator {
             "a34", "z", "a44", ""
     );
     public static String getCanonical(Map<String, Double> values, WideSurfaceType wideSurfaceType) {
-        return "";
-//        double coefficient;
-//        double rightPart;
-//        switch (wideSurfaceType) {
-//            case "full square":
-//                coefficient = I4/I3;
-//                rightPart = coefficient != 0 ? -coefficient/coefficient : 0;
-//                return lambda1 /coefficient + "x^2 + " + lambda2 /coefficient + "y^2 + " + lambda3 /coefficient + "z^2 = " + rightPart;
-//            case "cylinder":
-//                coefficient = K3/I2;
-//                rightPart = coefficient != 0 ? -coefficient/coefficient : 0;
-//                return lambda1 /coefficient + "x^2 + " + lambda2 /coefficient + "y^2 = " + rightPart;
-//            case "paraboloid":
-//                return lambda1 + "x^2 + " + lambda2 + "y^2 + " + 2 * Math.sqrt(-I4/I2) + "z = 0";
-//            case "paraboloid cylinder":
-//                return lambda1 + "x^2 + " + 2 * Math.sqrt(-K3/I1) + "y = 0";
-//        }
+        double I1 = values.get("I1"), I2 = values.get("I2"), I3 = values.get("I3"), I4 = values.get("I4"),
+                K2 = values.get("K2"), K3 = values.get("K3"),
+                lambda1 = values.get("lambda1"), lambda2 = values.get("lambda2"), lambda3 = values.get("lambda3");
+
+        double coefficient;
+
+        switch (wideSurfaceType) {
+            case FULL_SQUARE:
+                coefficient = I4/I3;
+
+                // Циліндр
+                if (coefficient == 0.0) {
+                    return lambda1 + "x² + " + lambda2 + "y² + " + lambda3  + "z² = 0";
+                }
+
+                return Calculator.round(lambda1 / -coefficient) + "x² + "
+                        + Calculator.round(lambda2 / -coefficient) + "y² + "
+                        + Calculator.round(lambda3 / -coefficient) + "z² = 1";
+
+            case CYLINDER:
+                coefficient = K3/I2;
+                return Calculator.round(lambda1 / -coefficient) + "x² + "
+                        + Calculator.round(lambda2 / -coefficient) + "y² = 1";
+
+            case PARABOLOID:
+                coefficient = Calculator.round(2 * Math.sqrt(-I4/I2));
+                return lambda1 + "x² + " + lambda2 + "y² + " + coefficient  + "z = 0";
+
+            case PARABOLIC_CYLINDER:
+                return lambda1 + "x² + " + 2 * Math.sqrt(-K3/I1) + "y = 0";
+        }
+
+        return "Empty";
     }
 
     public static String getUserEquation(Map<String, String> request) {
