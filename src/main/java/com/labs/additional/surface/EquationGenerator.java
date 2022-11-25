@@ -64,4 +64,9 @@ public class EquationGenerator {
 
         return equation.toString();
     }
+
+    public static String getCubicEquation(Map<String, Double> values) {
+        double I1 = values.get("I1"), I2 = values.get("I2"), I3 = values.get("I3");
+        return "λ³ + " + -I1 + "λ² + " + I2 + "λ + " + -I3 + " = 0";
+    }
 }
