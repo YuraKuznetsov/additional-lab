@@ -29,7 +29,7 @@ public class TypeFounder {
             return WideSurfaceType.PARABOLOID;
         }
 
-        if (I2 !=0) {
+        if (I2 !=0 && K3 != 0) {
             return WideSurfaceType.CYLINDER;
         }
 
