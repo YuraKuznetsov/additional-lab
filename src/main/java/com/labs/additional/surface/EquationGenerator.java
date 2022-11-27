@@ -28,21 +28,22 @@ public class EquationGenerator {
                     return lambda1 + "x² + " + lambda2 + "y² + " + lambda3  + "z² = 0";
                 }
 
-                return Calculator.round(lambda1 / -coefficient) + "x² + "
-                        + Calculator.round(lambda2 / -coefficient) + "y² + "
-                        + Calculator.round(lambda3 / -coefficient) + "z² = 1";
+                return Calculator.round3(lambda1 / -coefficient) + "x² + "
+                        + Calculator.round3(lambda2 / -coefficient) + "y² + "
+                        + Calculator.round3(lambda3 / -coefficient) + "z² = 1";
 
             case CYLINDER:
                 coefficient = K3/I2;
-                return Calculator.round(lambda1 / -coefficient) + "x² + "
-                        + Calculator.round(lambda2 / -coefficient) + "y² = 1";
+                return Calculator.round3(lambda1 / -coefficient) + "x² + "
+                        + Calculator.round3(lambda2 / -coefficient) + "y² = 1";
 
             case PARABOLOID:
-                coefficient = Calculator.round(2 * Math.sqrt(-I4/I2));
+                coefficient = Calculator.round3(2 * Math.sqrt(-I4/I2));
                 return lambda1 + "x² + " + lambda2 + "y² + " + coefficient  + "z = 0";
 
             case PARABOLIC_CYLINDER:
-                return lambda1 + "x² + " + 2 * Math.sqrt(-K3/I1) + "y = 0";
+                coefficient = Calculator.round3(2 * Math.sqrt(-K3/I1));
+                return lambda1 + "x² + " + coefficient + "y = 0";
         }
 
         return "Empty";
