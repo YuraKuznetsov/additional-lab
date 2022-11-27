@@ -106,11 +106,11 @@ main {
   background: rgb(230, 228, 228);
 }
 
-h1.title {
+.title {
   font-size: 20px;
   font-weight: 600;
 }
-h1.title::first-letter {
+.title::first-letter {
   font-size: 24px;
   font-weight: 700;
 }
@@ -167,7 +167,7 @@ h1.title::first-letter {
 }
 
 .form {
-  margin-top: 50px;
+  margin: 40px 0 50px 0;
   font-size: 18px;
 }
 .form input {

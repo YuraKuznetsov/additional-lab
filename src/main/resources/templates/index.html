@@ -22,7 +22,7 @@
         <main>
             <div class="container">
                 <h1 class="title">Визначення типу поверхні другого порядку</h1>
-                <form action="result" class="form">
+                <form action="result" class="form" name="equation">
                     <input name="a11" type="number" step="any"/>x²+
                     <input name="a22" type="number" step="any"/>y²+
                     <input name="a33" type="number" step="any"/>z²+
@@ -32,13 +32,11 @@
                     <input name="a14" type="number" step="any"/>x+
                     <input name="a24" type="number" step="any"/>y+
                     <input name="a34" type="number" step="any"/>z+
-                    <input name="a44" type="number"  step="any" placeholder=" a"/>
+                    <input name="a44" type="number" step="any"/>
                     = 0
                     <button type="submit" class="form__button button">Розрахувати</button>
                 </form>
-                <p class="text">
-                    Щоб визначити тип поверхні необхідно ввести коефіціенти та натиснути кнопку розрахувати
-                </p>
+                <h2 class="title">Визначені поверхні</h2>
             </div>
         </main>
         <footer class="footer">
@@ -49,5 +47,6 @@
             </div>
         </footer>
     </div>
+    <script src="../static/js/check.js"></script>
 </body>
 </html>
