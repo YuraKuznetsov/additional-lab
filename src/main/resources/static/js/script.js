@@ -14,3 +14,27 @@ function generateEquation() {
 
 generateButton.addEventListener("click", generateEquation);
 
+
+const submitButton = document.querySelector(".submit__button");
+
+function isImportantCoefficient() {
+    for (let i = 0; i < 6; i++) {
+        let value = inputs[i].value;
+        console.log(value);
+        if (value != "" && value != "0") {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+function checkForm(event) {
+    if (!isImportantCoefficient()) {
+        event.preventDefault();
+        alert("Ви не ввели необхідних коефіціентів");
+    }
+}
+
+submitButton.addEventListener("click", checkForm);
