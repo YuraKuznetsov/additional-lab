@@ -10,14 +10,31 @@
         width: 45px;
         font-size: 15px;
         margin-right: 5px;
+        padding-left: 2px;
 
         &:focus {
             box-shadow: 0 0 7px black;
         }
     }
+}
 
-    &__button {
-        margin-top: 30px;
+.submit__button {
+    margin-top: 30px;
+    background: $button_bg;
+}
+
+.generate__button {
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 20px;
+    background: rgb(86, 86, 152);
+
+    &:hover {
+        background: rgb(28, 28, 94);
+    }
+
+    &:active {
+        background: rgb(136, 66, 80);
     }
 }
 

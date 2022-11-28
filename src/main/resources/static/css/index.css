@@ -151,7 +151,6 @@ main {
   position: relative;
   top: 0px;
   padding: 10px 15px;
-  background: #04AA6D;
   color: white;
   border-radius: 10px;
   font-size: 15px;
@@ -174,13 +173,29 @@ main {
   width: 45px;
   font-size: 15px;
   margin-right: 5px;
+  padding-left: 2px;
 }
 .form input:focus {
   -webkit-box-shadow: 0 0 7px black;
           box-shadow: 0 0 7px black;
 }
-.form__button {
+
+.submit__button {
   margin-top: 30px;
+  background: #04AA6D;
+}
+
+.generate__button {
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 20px;
+  background: rgb(86, 86, 152);
+}
+.generate__button:hover {
+  background: rgb(28, 28, 94);
+}
+.generate__button:active {
+  background: rgb(136, 66, 80);
 }
 
 p.text {
