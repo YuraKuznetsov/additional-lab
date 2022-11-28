@@ -14,7 +14,7 @@ public class EquationGenerator {
     );
     public static String getCanonical(Map<String, Double> values, WideSurfaceType wideSurfaceType) {
         double I1 = values.get("I1"), I2 = values.get("I2"), I3 = values.get("I3"), I4 = values.get("I4"),
-                K2 = values.get("K2"), K3 = values.get("K3"),
+                K3 = values.get("K3"),
                 lambda1 = values.get("lambda1"), lambda2 = values.get("lambda2"), lambda3 = values.get("lambda3");
 
         double coefficient;
@@ -54,7 +54,7 @@ public class EquationGenerator {
 
         for (String key : request.keySet()) {
             String value = request.get(key);
-            if (value.isEmpty()) continue;
+            if (value.isEmpty() || value.equals("0")) continue;
             equation.append(value).append(coefficientMeaning.get(key));
             equation.append(" + ");
         }
