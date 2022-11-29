@@ -166,7 +166,7 @@ main {
 }
 
 .form {
-  margin: 40px 0 50px 0;
+  margin: 40px 0 60px 0;
   font-size: 18px;
 }
 .form input {
@@ -196,6 +196,35 @@ main {
 }
 .generate__button:active {
   background: rgb(136, 66, 80);
+}
+
+.equations {
+  margin-top: 20px;
+  overflow: auto;
+  max-height: 250px;
+}
+.equations__list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 18px;
+  padding: 10px 0;
+  background: none;
+}
+.equations__list li:hover {
+  background: white;
+}
+
+.equation {
+  font-weight: 500;
+}
+
+.type {
+  color: rgb(86, 86, 152);
+  font-weight: bold;
 }
 
 p.text {

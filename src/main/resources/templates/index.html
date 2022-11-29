@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,6 +38,14 @@
                     <div class="button generate__button">Згенерувати</div>
                 </form>
                 <h2 class="title">Визначені поверхні</h2>
+                <div class="equations">
+                    <ul class="equations__list" th:each="student: ${equations}">
+                        <li><span class="equation" th:text="${student.userEquation}"></span><span class="type" th:text="${student.surfaceType}"></span></li>
+                    </ul>
+                </div>
+
+                
+                
             </div>
         </main>
         <footer class="footer">
