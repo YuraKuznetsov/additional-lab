@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class EquationGenerator {
     private static final Map<String, String> coefficientMeaning = Map.of(
-            "a11", "x²", "a22", "y²", "a33", "z²",
+            "a11", "x^2", "a22", "y^2", "a33", "z^2",
             "a12", "xy", "a13", "xz", "a14", "x",
             "a23", "yz", "a24", "y",
             "a34", "z", "a44", ""
