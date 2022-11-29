@@ -12,10 +12,9 @@
         <nav class="nav">
             <div class="container">
                 <ul class="nav__list">
-                    <li><a href="" class="nav__link active">Головна</a></li>
-                    <li><a href="" class="nav__link">Доступні поверхні</a></li>
-                    <li><a href="" class="nav__link">Визначені поверхні</a></li>
-                    <li><a href="" class="nav__link">Алгоритм</a></li>  
+                    <li><a href="/" class="nav__link active">Головна</a></li>
+                    <li><a href="/available-surfaces" class="nav__link">Доступні поверхні</a></li>
+                    <li><a href="/algorithm" class="nav__link">Алгоритм</a></li>
                 </ul>
             </div>
         </nav>
@@ -40,7 +39,10 @@
                 <h2 class="title">Визначені поверхні</h2>
                 <div class="equations">
                     <ul class="equations__list" th:each="i : ${#numbers.sequence(equations.size() - 1, 0, -1)}">
-                        <li><span class="equation" th:text="${equations[i].userEquation}"></span><span class="type" th:text="${equations[i].surfaceType}"></span></li>
+                        <li>
+                            <span class="equation" th:text="${equations[i].userEquation}"></span>
+                            <span class="type" th:text="${equations[i].surfaceType}"></span>
+                        </li>
                     </ul>
                 </div>
             </div>
