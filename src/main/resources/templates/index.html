@@ -39,13 +39,10 @@
                 </form>
                 <h2 class="title">Визначені поверхні</h2>
                 <div class="equations">
-                    <ul class="equations__list" th:each="student: ${equations}">
-                        <li><span class="equation" th:text="${student.userEquation}"></span><span class="type" th:text="${student.surfaceType}"></span></li>
+                    <ul class="equations__list" th:each="i : ${#numbers.sequence(equations.size() - 1, 0, -1)}">
+                        <li><span class="equation" th:text="${equations[i].userEquation}"></span><span class="type" th:text="${equations[i].surfaceType}"></span></li>
                     </ul>
                 </div>
-
-                
-                
             </div>
         </main>
         <footer class="footer">
