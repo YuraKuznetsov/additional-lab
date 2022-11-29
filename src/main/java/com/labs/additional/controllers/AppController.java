@@ -32,14 +32,13 @@ public class AppController {
         } catch (IOException e) {
             equations = List.of();
         }
-
         model.addAttribute("equations", equations);
 
         return "index";
     }
 
     @GetMapping("/result")
-    public String result(@RequestParam Map<String, String> request, Model model) throws IOException {
+    public String result(@RequestParam Map<String, String> request, Model model) {
         SurfaceValidator validator = new SurfaceValidator(request);
         if (!validator.isCorrectRequest()) {
             return "resultErrorPage";
@@ -59,7 +58,11 @@ public class AppController {
                 EquationGenerator.getCanonical(values, typeFounder.getWideType()) : "Не підтримується";
 
         EquationStorage storage = new FileManager();
-        storage.saveEquation(userEquation, surfaceType.getName());
+        try {
+            storage.saveEquation(userEquation, surfaceType.getName());
+        } catch (IOException e) {
+            return "resultErrorPage";
+        }
 
         model.addAttribute("userEquation", userEquation);
         model.addAttribute("values", values);
