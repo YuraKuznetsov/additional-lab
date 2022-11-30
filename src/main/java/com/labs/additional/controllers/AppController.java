@@ -54,8 +54,7 @@ public class AppController {
         String userEquation = EquationGenerator.getUserEquation(request);
         SurfaceType surfaceType = typeFounder.getType();
 
-        String canonical = surfaceType != SurfaceType.PLANE ?
-                EquationGenerator.getCanonical(values, typeFounder.getWideType()) : "Не підтримується";
+        String canonical = EquationGenerator.getCanonical(values, typeFounder.getWideType());
 
         EquationStorage storage = new FileManager();
         try {

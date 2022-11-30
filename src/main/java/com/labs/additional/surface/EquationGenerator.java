@@ -46,7 +46,7 @@ public class EquationGenerator {
                 return lambda1 + "x² + " + coefficient + "y = 0";
         }
 
-        return "Empty";
+        return "Не підтримується";
     }
 
     public static String getUserEquation(Map<String, String> request) {
@@ -60,6 +60,8 @@ public class EquationGenerator {
         }
 
         int equationLength = equation.length();
+        if (equationLength == 0) return "";
+
         equation.replace(equationLength - 2, equationLength, "");
         equation.append("= 0");
 
