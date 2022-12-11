@@ -1,13 +1,11 @@
 package com.labs.additional.model;
 
-import com.labs.additional.surface.type.SurfaceType;
-
 public class Surface {
     private final String equation;
-    private final SurfaceType type;
+    private final String type;
     private final String canonicalEquation;
 
-    public Surface(String equation, SurfaceType type, String canonicalEquation) {
+    public Surface(String equation, String  type, String canonicalEquation) {
         this.equation = equation;
         this.type = type;
         this.canonicalEquation = canonicalEquation;
@@ -17,7 +15,7 @@ public class Surface {
         return equation;
     }
 
-    public SurfaceType getType() {
+    public String getType() {
         return type;
     }
 
