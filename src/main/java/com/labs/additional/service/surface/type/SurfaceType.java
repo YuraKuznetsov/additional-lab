@@ -1,4 +1,4 @@
-package com.labs.additional.surface.type;
+package com.labs.additional.service.surface.type;
 
 public enum SurfaceType {
 

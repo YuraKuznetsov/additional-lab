@@ -12,10 +12,22 @@ import java.util.Scanner;
 public class SurfaceRepository {
     private final static String filePath = "src/main/resources/storage/equations.txt";
 
-    public void saveSurface(String equation, String surfaceType) throws IOException {
-        FileWriter equationsFile = new FileWriter(filePath, true);
-        equationsFile.write(equation + "; " + surfaceType + "\n");
-        equationsFile.close();
+    public void saveSurface(Surface surface) throws IOException {
+        String surfaceInformationRow = generateSurfaceInformationRow(surface);
+        appendRow(surfaceInformationRow);
+    }
+
+    private String generateSurfaceInformationRow(Surface surface) {
+        return String.format("%s,%s,%s\n",
+                surface.getEquation(),
+                surface.getType(),
+                surface.getCanonicalEquation());
+    }
+
+    private void appendRow(String row) throws IOException {
+        FileWriter writer = new FileWriter(filePath, true);
+        writer.write(row);
+        writer.close();
     }
 
     public List<Surface> getAllSurfaces() throws IOException {
@@ -35,7 +47,7 @@ public class SurfaceRepository {
     }
 
     private Surface getSurface(String line) {
-        String[] splitLine = line.split("; ");
+        String[] splitLine = line.split(",");
         return new Surface(splitLine[0], splitLine[1], "");
     }
 }

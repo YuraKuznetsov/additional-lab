@@ -1,14 +1,14 @@
-package com.labs.additional.surface;
+package com.labs.additional.service.surface;
 
-import com.labs.additional.surface.type.SurfaceType;
-import com.labs.additional.surface.type.WideSurfaceType;
+import com.labs.additional.service.surface.type.SurfaceType;
+import com.labs.additional.service.surface.type.WideSurfaceType;
 
 import java.util.*;
 
 public class TypeFounder {
-    private final double I1, I2, I3, I4, K3, lambda1, lambda2, lambda3;
+    private double I1, I2, I3, I4, K3, lambda1, lambda2, lambda3;
 
-    public TypeFounder(Map<String, Double> values) {
+    public void setValues(Map<String, Double> values) {
         this.I1 = values.get("I1");
         this.I2 = values.get("I2");
         this.I3 = values.get("I3");

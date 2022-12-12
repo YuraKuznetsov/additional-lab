@@ -1,4 +1,4 @@
-package com.labs.additional.surface.calculations;
+package com.labs.additional.service.surface.calculations;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.labs.additional.surface;
+package com.labs.additional.service.surface;
 
 import java.util.List;
 import java.util.Map;

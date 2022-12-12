@@ -1,7 +1,8 @@
 package com.labs.additional.surface;
 
-import com.labs.additional.surface.type.SurfaceType;
-import com.labs.additional.surface.type.WideSurfaceType;
+import com.labs.additional.service.surface.TypeFounder;
+import com.labs.additional.service.surface.type.SurfaceType;
+import com.labs.additional.service.surface.type.WideSurfaceType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TypeFounderTest {
-    TypeFounder typeFounder;
+    TypeFounder typeFounder = new TypeFounder();
 
     @BeforeEach
     void setUp() {
@@ -18,7 +19,7 @@ class TypeFounderTest {
                 "I1", -13.0, "I2", 28.5, "I3", 93.5, "I4", 396.56,
                 "K2", -22.25, "K3", 251.75,
                 "lambda1", -6.87, "lambda2", -7.86, "lambda3", 1.73);
-        typeFounder = new TypeFounder(values);
+        typeFounder.setValues(values);
     }
 
     @Test

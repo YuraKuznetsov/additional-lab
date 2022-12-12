@@ -1,18 +1,15 @@
-package com.labs.additional.surface.calculations;
+package com.labs.additional.service.surface.calculations;
 
 import java.util.List;
 import java.util.Map;
 
 public class Calculator {
-    private final Map<String, Double> coefficients;
+    private Map<String, Double> coefficients;
     private double[][] matrix3 = new double[3][3], matrix4 = new double[4][4];
     private double I1, I2, I3, I4, K2, K3, lambda1, lambda2, lambda3;
 
-    public Calculator(Map<String, Double> coefficients) {
-        this.coefficients = coefficients;
-    }
-
     public Map<String, Double> calcValues() {
+        if (coefficients == null) throw new RuntimeException("Calculator doesn't have coefficients");
         fillMatrices();
         defineI();
         defineK();
@@ -84,5 +81,9 @@ public class Calculator {
         value = Math.round(value * 1000);
         value /= 1000;
         return value;
+    }
+
+    public void setCoefficients(Map<String, Double> coefficients) {
+        this.coefficients = coefficients;
     }
 }

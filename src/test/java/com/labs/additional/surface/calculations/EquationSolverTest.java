@@ -1,6 +1,7 @@
 package com.labs.additional.surface.calculations;
 
 
+import com.labs.additional.service.surface.calculations.EquationSolver;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

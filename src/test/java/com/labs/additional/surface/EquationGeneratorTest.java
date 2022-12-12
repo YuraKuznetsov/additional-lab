@@ -1,6 +1,7 @@
 package com.labs.additional.surface;
 
-import com.labs.additional.surface.type.WideSurfaceType;
+import com.labs.additional.service.surface.EquationGenerator;
+import com.labs.additional.service.surface.type.WideSurfaceType;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;

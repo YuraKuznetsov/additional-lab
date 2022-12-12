@@ -1,7 +1,7 @@
-package com.labs.additional.surface;
+package com.labs.additional.service.surface;
 
-import com.labs.additional.surface.calculations.Calculator;
-import com.labs.additional.surface.type.WideSurfaceType;
+import com.labs.additional.service.surface.calculations.Calculator;
+import com.labs.additional.service.surface.type.WideSurfaceType;
 
 import java.util.Map;
 

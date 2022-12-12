@@ -1,4 +1,4 @@
-package com.labs.additional.surface.calculations;
+package com.labs.additional.service.surface.calculations;
 
 public class Matrix {
 
