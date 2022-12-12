@@ -18,10 +18,7 @@ public class SurfaceRepository {
     }
 
     private String generateSurfaceInformationRow(Surface surface) {
-        return String.format("%s,%s,%s\n",
-                surface.getEquation(),
-                surface.getType(),
-                surface.getCanonicalEquation());
+        return String.format("%s,%s\n", surface.getEquation(), surface.getType());
     }
 
     private void appendRow(String row) throws IOException {
