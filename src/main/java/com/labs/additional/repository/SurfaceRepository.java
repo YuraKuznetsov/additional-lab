@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SurfaceRepository {
-    private final static String filePath = "src/main/resources/storage/equations.txt";
+    private final static String filePath = "src/main/resources/storage/surfaces_info.txt";
 
     public void saveSurface(Surface surface) throws IOException {
         String surfaceInformationRow = generateSurfaceInformationRow(surface);
