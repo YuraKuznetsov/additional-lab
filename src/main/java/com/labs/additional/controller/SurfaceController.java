@@ -5,6 +5,7 @@ import com.labs.additional.service.surface.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class SurfaceController {
         return "index";
     }
 
-    @GetMapping("/result")
+    @PostMapping("/surface/result")
     public String result(@RequestParam Map<String, String> request, Model model) {
         SurfaceValidator validator = new SurfaceValidator(request);
         if (!validator.isCorrectRequest()) {
