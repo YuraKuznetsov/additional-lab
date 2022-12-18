@@ -77,8 +77,9 @@ input::-webkit-inner-spin-button {
 }
 
 body {
-  font-size: 18px;
+  font-size: 15px;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background: #12161d;
 }
 
 .wrapper {
@@ -94,7 +95,8 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1150px;
+  padding: 0 50px;
   margin: 0 auto;
 }
 
@@ -103,26 +105,23 @@ main {
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   padding: 40px 0;
-  background: rgb(241, 240, 240);
+  color: white;
 }
 
 .title {
-  font-size: 20px;
-  font-weight: 600;
-}
-.title::first-letter {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .nav {
-  background-color: #333;
+  height: 64px;
 }
 .nav__list {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  border-bottom: 1px solid white;
 }
 .nav li {
   float: left;
@@ -131,20 +130,26 @@ main {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 24px 16px;
   text-decoration: none;
 }
 .nav__link:hover:not(.active) {
-  background-color: #111;
+  color: rgba(196, 196, 196, 0.35);
 }
 .nav__link.active {
-  background-color: #04AA6D;
+  color: #229fff;
+}
+.nav__link:first-child {
+  padding: 25px 16px 25px 0;
 }
 
 .footer {
   color: white;
-  padding: 14px 0;
-  background-color: #333;
+}
+.footer__body {
+  padding: 24px 0;
+  border-top: 1px solid white;
+  height: 64px;
 }
 
 .button {
@@ -165,24 +170,43 @@ main {
   background: #6377ba;
 }
 
+.description {
+  margin-top: 35px;
+  font-size: 15px;
+  line-height: 27px;
+}
+
+span.strong {
+  font-size: 17px;
+}
+
+span.coef {
+  color: #229fff;
+  font-weight: 500;
+  margin-right: 2px;
+}
+
 .form {
-  margin: 40px 0 60px 0;
+  margin-top: 50px;
   font-size: 18px;
 }
 .form input {
-  width: 45px;
+  width: 50px;
   font-size: 15px;
   margin-right: 5px;
-  padding-left: 2px;
+  padding: 2px 4px;
+  color: white;
+  border: 1px solid #229fff;
+  background: #122e47;
 }
 .form input:focus {
-  -webkit-box-shadow: 0 0 7px black;
-          box-shadow: 0 0 7px black;
+  -webkit-box-shadow: 0 0 15px #229fff;
+          box-shadow: 0 0 15px #229fff;
 }
 
 .submit__button {
   margin-top: 30px;
-  background: #04AA6D;
+  background: #229fff;
 }
 
 .generate__button {
@@ -190,6 +214,8 @@ main {
   margin-top: 30px;
   margin-left: 20px;
   background: rgb(86, 86, 152);
+  background: #017c4f;
+  background: #229fff;
 }
 .generate__button:hover {
   background: rgb(28, 28, 94);

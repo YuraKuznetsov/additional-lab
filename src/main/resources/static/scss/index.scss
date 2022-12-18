@@ -2,25 +2,45 @@
 @import "components.scss";
 
 
+.description {
+    margin-top: 35px;
+    font-size: $text-size;
+    line-height: 27px;
+}
+
+span.strong {
+    font-size: $text-size + 2px;
+}
+
+span.coef {
+    color: $light-blue;
+    font-weight: 500;
+    margin-right: 2px;
+}
+
 .form {
-    margin: 40px 0 60px 0;
+    margin-top: 50px;
     font-size: 18px;
 
     input {
-        width: 45px;
+        width: 50px;
         font-size: 15px;
         margin-right: 5px;
-        padding-left: 2px;
+        padding: 2px 4px;
+        color: white;
+        border: 1px solid $light-blue;
+
+        background: $middle-blue;
 
         &:focus {
-            box-shadow: 0 0 7px black;
+            box-shadow: 0 0 15px $light-blue;
         }
     }
 }
 
 .submit__button {
     margin-top: 30px;
-    background: $button_bg;
+    background: $light-blue;
 }
 
 .generate__button {
@@ -28,6 +48,8 @@
     margin-top: 30px;
     margin-left: 20px;
     background: rgb(86, 86, 152);
+    background: $button_bg;
+    background: $light-blue;
 
     &:hover {
         background: rgb(28, 28, 94);

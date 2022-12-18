@@ -12,45 +12,62 @@
         <nav class="nav">
             <div class="container">
                 <ul class="nav__list">
-                    <li><a href="/surface" class="nav__link active">Головна</a></li>
+                    <li><a href="/surface" class="nav__link active">Визначити тип</a></li>
+                    <li><a href="/surface/results" class="nav__link">Визначені поверхні</a></li>
                     <li><a href="/surface/available" class="nav__link">Доступні поверхні</a></li>
-                    <li><a href="/algorithm" class="nav__link">Алгоритм</a></li>
+                    <li><a href="/surface/algorithm" class="nav__link">Алгоритм</a></li>
                 </ul>
             </div>
         </nav>
         <main>
             <div class="container">
                 <h1 class="title">Визначення типу поверхні другого порядку</h1>
+                <div class="description">
+                    Поверхнею другого порядку називається множина точок, прямокутні координати яких задовольняють рівняння виду:<br>
+                    <span class="strong">
+                        <span class="coef">a</span>x² + 
+                        <span class="coef">b</span>y² + 
+                        <span class="coef">c</span>z² + 
+                        <span class="coef">d</span>xy + 
+                        <span class="coef">e</span>xz + 
+                        <span class="coef">f</span>yz + 
+                        gx + hy + kz + l = 0
+                    </span><br>
+                    До того ж, принаймні один з коефіцієнтів 
+                    <span class="coef">a</span>
+                    <span class="coef">b</span>
+                    <span class="coef">c</span>
+                    <span class="coef">d</span>
+                    <span class="coef">e</span>
+                    <span class="coef">f</span>
+                    повинен бути відмінний від нуля. <br><br>
+                    Для визначення типу поверхні, введіть коефіціенти рівняння у форму та натисніть відповідну кнопку. 
+                    Для швидкого тестування, натискайте кнопку "Згенерувати" до тих пір, поки підібране рівняння не здаватиметься для вас підходящим. 
+                    Також можна використати приклади попередньо підготовлених рівнянь, натиснувши на них.
+                </div>
                 <form action="/surface/result" method="post" class="form" name="equation">
-                    <input name="a11" type="number" step="any"/>x²+
-                    <input name="a22" type="number" step="any"/>y²+
-                    <input name="a33" type="number" step="any"/>z²+
-                    <input name="a12" type="number" step="any"/>xy+
-                    <input name="a13" type="number" step="any"/>xz+
-                    <input name="a23" type="number" step="any"/>yz+
-                    <input name="a14" type="number" step="any"/>x+
-                    <input name="a24" type="number" step="any"/>y+
-                    <input name="a34" type="number" step="any"/>z+
+                    <input name="a11" type="number" step="any"/>x² +
+                    <input name="a22" type="number" step="any"/>y² +
+                    <input name="a33" type="number" step="any"/>z² +
+                    <input name="a12" type="number" step="any"/>xy +
+                    <input name="a13" type="number" step="any"/>xz +
+                    <input name="a23" type="number" step="any"/>yz +
+                    <input name="a14" type="number" step="any"/>x +
+                    <input name="a24" type="number" step="any"/>y +
+                    <input name="a34" type="number" step="any"/>z +
                     <input name="a44" type="number" step="any"/>
-                    = 0
-                    <button class="button submit__button">Розрахувати</button>
+                    = 0 <br>
+                    <button class="button submit__button">Визначити тип</button>
                     <div class="button generate__button">Згенерувати</div>
                 </form>
-                <h2 class="title">Визначені поверхні</h2>
-                <div class="equations">
-                    <ul class="equations__list" th:each="i : ${#numbers.sequence(surfaces.size() - 1, 0, -1)}">
-                        <li>
-                            <span class="equation" th:text="${surfaces[i].equation}"></span>
-                            <span class="type" th:text="${surfaces[i].type}"></span>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </main>
         <footer class="footer">
             <div class="container">
-                <div class="footer__text">
-                    Лабораторна робота Кузнецова Юрія, жодні права не захищені
+                <div class="footer__body">
+                    <div class="footer__text">
+                        Лабораторна робота Кузнецова Юрія, жодні права не захищені
+                    </div>
                 </div>
             </div>
         </footer>
