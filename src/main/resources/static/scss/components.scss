@@ -8,9 +8,10 @@ $button_active_bg: #6377ba;
 $dark-blue: #12161d;
 $middle-blue: #122e47;
 $light-blue: #229fff;
+$light-light-blue: #4eaffa;  // for hower
 $text-color: white;
-
 $text-size: 15px;
+
 
 
 
@@ -90,19 +91,14 @@ main {
     position: relative;
     top: 0px;
     padding: 10px 15px;
-    color: white;
 	border-radius: 10px;
-    font-size: 15px;
+    font-size: $text-size;
     font-weight: 500;
     letter-spacing: 1px;
-
-    &:hover {
-        background: $button_hover_bg;
-    }
+    transition: top .2s;
 
     &:active {
         top: 4px;
-        background: $button_active_bg;
     }
 }
 

@@ -39,24 +39,29 @@ span.coef {
 }
 
 .submit__button {
-    margin-top: 30px;
+    color: white;
     background: $light-blue;
+    margin-top: 30px;
+
+    transition: background .3s, box-shadow .3s;
+
+    &:hover {
+        background: $light-light-blue;
+        box-shadow: 0 0 15px $light-light-blue;
+    }
 }
 
 .generate__button {
     display: inline-block;
     margin-top: 30px;
     margin-left: 20px;
-    background: rgb(86, 86, 152);
-    background: $button_bg;
     background: $light-blue;
 
-    &:hover {
-        background: rgb(28, 28, 94);
-    }
+    transition: background .3s, box-shadow .3s;
 
-    &:active {
-        background: rgb(136, 66, 80);
+    &:hover {
+        background: $light-light-blue;
+        box-shadow: 0 0 15px $light-light-blue;
     }
 }
 

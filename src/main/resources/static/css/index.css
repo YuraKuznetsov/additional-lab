@@ -156,18 +156,16 @@ main {
   position: relative;
   top: 0px;
   padding: 10px 15px;
-  color: white;
   border-radius: 10px;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 1px;
-}
-.button:hover {
-  background: #038052;
+  -webkit-transition: top 0.2s;
+  -o-transition: top 0.2s;
+  transition: top 0.2s;
 }
 .button:active {
   top: 4px;
-  background: #6377ba;
 }
 
 .description {
@@ -205,23 +203,36 @@ span.coef {
 }
 
 .submit__button {
-  margin-top: 30px;
+  color: white;
   background: #229fff;
+  margin-top: 30px;
+  -webkit-transition: background 0.3s, -webkit-box-shadow 0.3s;
+  transition: background 0.3s, -webkit-box-shadow 0.3s;
+  -o-transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, -webkit-box-shadow 0.3s;
+}
+.submit__button:hover {
+  background: #4eaffa;
+  -webkit-box-shadow: 0 0 15px #4eaffa;
+          box-shadow: 0 0 15px #4eaffa;
 }
 
 .generate__button {
   display: inline-block;
   margin-top: 30px;
   margin-left: 20px;
-  background: rgb(86, 86, 152);
-  background: #017c4f;
   background: #229fff;
+  -webkit-transition: background 0.3s, -webkit-box-shadow 0.3s;
+  transition: background 0.3s, -webkit-box-shadow 0.3s;
+  -o-transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, -webkit-box-shadow 0.3s;
 }
 .generate__button:hover {
-  background: rgb(28, 28, 94);
-}
-.generate__button:active {
-  background: rgb(136, 66, 80);
+  background: #4eaffa;
+  -webkit-box-shadow: 0 0 15px #4eaffa;
+          box-shadow: 0 0 15px #4eaffa;
 }
 
 .equations {
