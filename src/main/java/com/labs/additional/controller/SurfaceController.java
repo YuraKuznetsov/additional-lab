@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -16,9 +17,25 @@ public class SurfaceController {
     @GetMapping("/surface")
     public String index(Model model) {
         return "surface/index";
-//        SurfaceService surfaceService = new SurfaceService();
-//        List<Surface> surfaces = surfaceService.getAllSurfaces();
-//        model.addAttribute("surfaces", surfaces);
+    }
+
+    @GetMapping("/surface/results")
+    public String results(Model model) {
+        SurfaceService surfaceService = new SurfaceService();
+        List<Surface> surfaces = surfaceService.getAllSurfaces();
+        model.addAttribute("surfaces", surfaces);
+
+        return "surface/results";
+    }
+
+    @GetMapping("/surface/available")
+    public String available() {
+        return "surface/available";
+    }
+
+    @GetMapping("/surface/algorithm")
+    public String algorithm() {
+        return "surface/algorithm";
     }
 
     @PostMapping("/surface/result")
