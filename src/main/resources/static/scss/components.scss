@@ -1,20 +1,4 @@
-$light_bg: #017c4f;
-$button_bg: $light_bg;
-$button_hover_bg: #038052;
-$button_active_bg: #6377ba;
-//$nav_footer_bg: none; 
-
-// New colors
-$dark-blue: #12161d;
-$middle-blue: #122e47;
-$light-blue: #229fff;
-$light-light-blue: #4eaffa;  // for hower
-$text-color: white;
-$text-size: 15px;
-
-
-
-
+@import "colors.scss";
 
 .wrapper {
 	min-height: 100vh;
@@ -63,7 +47,7 @@ main {
         text-decoration: none;
 
         &:hover:not(.active) {
-            color: rgba(196,196,196,.35);
+            color: $light-light-blue;
         }
 
         &.active {

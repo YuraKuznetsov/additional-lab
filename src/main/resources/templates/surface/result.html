@@ -21,41 +21,52 @@
     </nav>
     <main>
         <div class="container">
-            <h1 class="title">
-                Результат визначення
-            </h1>
-            <div class="info">
-                <p class="text">
-                    Введене рівняння: <span class="important" th:text="${userEquation}"></span>
-                </p>
-                <p class="text">
-                    Коефіціенти I та K: <br><br>
-                    I<span class="small">1</span> = <span th:text="${values.I1}"></span>;
-                    I<span class="small">2</span> = <span th:text="${values.I2}"></span>;
-                    I<span class="small">3</span> = <span th:text="${values.I3}"></span>;
-                    I<span class="small">4</span> = <span th:text="${values.I4}"></span>;
-                    K<span class="small">2</span> = <span th:text="${values.K2}"></span>;
-                    K<span class="small">3</span> = <span th:text="${values.K3}"></span>;
-                </p>
-                <p class="text">
-                    Кубічне рівняння: <span th:text="${cubicEquation}"></span> <br><br>
-                    λ<span class="small">1</span> = <span th:text="${values.lambda1}"></span>;
-                    λ<span class="small">2</span> = <span th:text="${values.lambda2}"></span>;
-                    λ<span class="small">3</span> = <span th:text="${values.lambda3}"></span>
-                </p>
-                <p class="text">
-                    Канонічне рівняння: <span class="important" th:text="${canonical}"></span>
-                </p>
-                <p class="text">
-                    Тип поверхні: <span class="answer" th:text="${type}"></span>
-                </p>
+            <h1 class="title">Детальний опис визначення</h1>
+
+            <div class="table">
+                <div class="table__head">
+                    <div class="table__title title-left">Обрахунки</div>
+                    <div class="table__title title-right">Графік поверхні</div>
+                </div>
+                <div class="table__body">
+                    <div class="body-left">
+                        Введене рівняння: <br>
+                        <span class="important" th:text="${userEquation}"></span> <br><br>
+        
+                        Коефіціенти I та K: <br>
+                        I<span class="small">1</span> = <span th:text="${values.I1}"></span>;
+                        I<span class="small">2</span> = <span th:text="${values.I2}"></span>;
+                        I<span class="small">3</span> = <span th:text="${values.I3}"></span>;
+                        I<span class="small">4</span> = <span th:text="${values.I4}"></span>;
+                        K<span class="small">2</span> = <span th:text="${values.K2}"></span>;
+                        K<span class="small">3</span> = <span th:text="${values.K3}"></span>; <br><br>
+        
+                        Кубічне рівняння на основі коефіціентів I: <br>
+                        <span th:text="${cubicEquation}"></span> <br>
+                        λ<span class="small">1</span> = <span th:text="${values.lambda1}"></span>;
+                        λ<span class="small">2</span> = <span th:text="${values.lambda2}"></span>;
+                        λ<span class="small">3</span> = <span th:text="${values.lambda3}"></span> <br><br>
+                        
+                        Канонічне рівняння: <span class="important" th:text="${canonical}"></span> <br><br>
+                        
+                        Тип поверхні: <span class="answer" th:text="${type}"></span>
+                    </div>
+
+                    <div class="body-right">
+                        <div class="image-box">
+                            <img th:src="@{/images/surfaces/Hyperboloid_1.png}" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
     <footer class="footer">
         <div class="container">
-            <div class="footer__text">
-                Лабораторна робота Кузнецова Юрія, жодні права не захищені
+            <div class="footer__body">
+                <div class="footer__text">
+                    Лабораторна робота Кузнецова Юрія, жодні права не захищені
+                </div>
             </div>
         </div>
     </footer>
