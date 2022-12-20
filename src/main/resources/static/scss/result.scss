@@ -50,6 +50,9 @@
 }
 
 
+.text
+
+
 
 
 /*.table {
@@ -85,14 +88,24 @@
 
 .small {
     font-size: 11px;
+    color: #000;
 }
 
 .important {
-    color: $light-blue;
+    color: $light-light-blue;
     font-weight: 500;
 }
 
 .answer {
     color: $light-blue;
+    font-size: $text-size + 2px;
     font-weight: 500;
+}
+
+.text {
+    margin-top: 30px;
+}
+
+.link {
+    color: $light-light-blue;
 }

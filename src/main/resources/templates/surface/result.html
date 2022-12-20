@@ -21,7 +21,7 @@
     </nav>
     <main>
         <div class="container">
-            <h1 class="title">Детальний опис визначення</h1>
+            <h1 class="title">Детальний опис знаходження типу поверхні</h1>
 
             <div class="table">
                 <div class="table__head">
@@ -32,20 +32,42 @@
                     <div class="body-left">
                         Введене рівняння: <br>
                         <span class="important" th:text="${userEquation}"></span> <br><br>
-        
-                        Коефіціенти I та K: <br>
+
+                        Знайдемо коефіціенти рівняння: <br>
+                        a₁₁ = 1;
+                        a₁₂ = 4;
+                        a₁₃ = -5;
+                        a₁₄ = 0;
+                        ...
+                        <br><br>
+
+                        Розрахуємо I та K: <br>
                         I<span class="small">1</span> = <span th:text="${values.I1}"></span>;
                         I<span class="small">2</span> = <span th:text="${values.I2}"></span>;
                         I<span class="small">3</span> = <span th:text="${values.I3}"></span>;
                         I<span class="small">4</span> = <span th:text="${values.I4}"></span>;
+                        <br>
                         K<span class="small">2</span> = <span th:text="${values.K2}"></span>;
-                        K<span class="small">3</span> = <span th:text="${values.K3}"></span>; <br><br>
+                        K<span class="small">3</span> = <span th:text="${values.K3}"></span>;
+                        <br><br>
         
-                        Кубічне рівняння на основі коефіціентів I: <br>
+                        Розв'яжемо кубічне рівняння: <br>
                         <span th:text="${cubicEquation}"></span> <br>
                         λ<span class="small">1</span> = <span th:text="${values.lambda1}"></span>;
                         λ<span class="small">2</span> = <span th:text="${values.lambda2}"></span>;
-                        λ<span class="small">3</span> = <span th:text="${values.lambda3}"></span> <br><br>
+                        λ<span class="small">3</span> = <span th:text="${values.lambda3}"></span>
+                        <br><br>
+
+                        Оскільки I<span class="small">3</span> не дорівнює нулеві, маємо канонічне рівняння: <br>
+                        λ1x² + λ2y² + λ3z² + I4 / I3 = 0
+                        <br><br>
+
+                        Підставимо змінні: <br>
+                        12x² + 3y² + 7z² + -5 = 0
+                        <br><br>
+
+                        Скоротимо та отримаємо звичне канонічне рівняння: <br>
+                        2.4x² + 0.6y² + 1.4z² = 1
                         
                         Канонічне рівняння: <span class="important" th:text="${canonical}"></span> <br><br>
                         
@@ -58,6 +80,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text">
+                Щось незрозуміло? Ознайомитися детальніше із алгоритмом та переглянути усі формули можна
+                <a href="/surface/algorithm" class="link">тут</a>.
             </div>
         </div>
     </main>

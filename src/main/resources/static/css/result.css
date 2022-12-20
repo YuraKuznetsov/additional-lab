@@ -224,43 +224,26 @@ main {
   width: 100%;
 }
 
-/*.table {
-    display: flex;
-    margin-top: 35px;
-    border: 3px solid $middle-blue;
-
-    &__left {
-        flex: 70%;
-    }
-
-    &__right {
-        flex: 30%;
-    }
-}
-
-.column {
-
-    &__title {
-        background: $middle-blue;
-        padding: 6px 8px;
-        border-bottom: 3px solid $middle-blue;
-        text-align: center;
-    }
-
-    &__body {
-        padding: 15px 8px;
-    }
-}*/
-.small {
+.text .small {
   font-size: 11px;
+  color: #000;
 }
 
 .important {
-  color: #229fff;
+  color: #4eaffa;
   font-weight: 500;
 }
 
 .answer {
   color: #229fff;
+  font-size: 17px;
   font-weight: 500;
+}
+
+.text {
+  margin-top: 30px;
+}
+
+.link {
+  color: #4eaffa;
 }
