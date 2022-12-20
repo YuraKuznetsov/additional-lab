@@ -14,6 +14,8 @@ import java.util.Map;
 @Controller
 public class SurfaceController {
 
+    SurfaceService surfaceService = new SurfaceService();
+
     @GetMapping("/surface")
     public String index(Model model) {
         return "surface/index";
@@ -21,7 +23,6 @@ public class SurfaceController {
 
     @GetMapping("/surface/results")
     public String results(Model model) {
-        SurfaceService surfaceService = new SurfaceService();
         List<Surface> surfaces = surfaceService.getAllSurfaces();
         model.addAttribute("surfaces", surfaces);
 
@@ -44,8 +45,6 @@ public class SurfaceController {
         if (!validator.isCorrectRequest()) {
             return "surface/resultErrorPage";
         }
-
-        SurfaceService surfaceService = new SurfaceService();
 
         String userEquation = surfaceService.getUserEquation(request);
         Map<String, Double> importantValues = surfaceService.getImportantValues(request);
