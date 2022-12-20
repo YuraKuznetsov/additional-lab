@@ -38,3 +38,7 @@ function checkForm(event) {
 }
 
 submitButton.addEventListener("click", checkForm);
+
+function showSurfaces(surfaces) {
+    alert("Surfaces: " + surfaces[0].equation);
+}

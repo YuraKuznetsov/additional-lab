@@ -1,0 +1,45 @@
+@import "resetStyles.scss";
+@import "components.scss";
+
+.surfaces-list {
+    margin-top: 35px;
+}
+
+
+.surface {  
+    background: $middle-blue;
+    border-radius: 10px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        background: $middle-blue;
+        padding: 12px 20px;
+        border-radius: 10px;
+
+        &:hover > &__body {
+            display: block;
+        }
+    }
+
+    &__equation {
+    }
+
+    &__icon {
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        padding: 12px 20px;
+        border-top: 3px solid $dark-blue;
+        display: none;
+    }
+
+    &__canonical {
+    }
+
+    &__type {
+    }
+}
