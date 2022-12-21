@@ -174,9 +174,9 @@ main {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   row-gap: 20px;
 }
 
@@ -195,12 +195,16 @@ main {
   -webkit-transition: background 0.4s;
   -o-transition: background 0.4s;
   transition: background 0.4s;
+  margin: -1px;
+  border-radius: 10px;
+  font-size: 15px;
 }
 .surface__header:hover {
   background: #122e47;
 }
 .surface__header.fill-bg {
   background: #122e47;
+  border-radius: 10px 10px 0 0;
 }
 .surface__icon {
   font-weight: bold;

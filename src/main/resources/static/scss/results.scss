@@ -4,7 +4,7 @@
 .surfaces-list {
     margin-top: 35px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     row-gap: 20px;
 }
 
@@ -18,6 +18,9 @@
         justify-content: space-between;
         padding: 12px 20px;
         transition: background .4s;
+        margin: -1px;
+        border-radius: 10px;
+        font-size: $text-size;
 
         &:hover {
             background: $middle-blue;
@@ -25,6 +28,7 @@
 
         &.fill-bg {
             background: $middle-blue;
+            border-radius: 10px 10px 0 0;
         }
     }
 
