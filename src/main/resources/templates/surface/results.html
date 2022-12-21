@@ -24,22 +24,23 @@
         <div class="container">
             <h1 class="title">Усі визначені та збережені поверхні</h1>
 
-            <div class="surfaces-list">
-
+            <div class="surfaces-list" th:each="surface : ${surfaces}">
                 <div class="surface">
                     <div class="surface__header">
-                        <div class="surface__equation">2y^2 + 4xz + 2y + 6 = 0</div>
+                        <div class="surface__equation">
+                            <span th:text="${surface.equation}"></span>
+                        </div>
                         <div class="surface__icon"><i class="fa-solid fa-caret-down"></i></div>
                     </div>
                     <div class="surface__body">
                         <div class="surface__info">
                             <div class="surface__canonical">
                                 Канонічне рівняння: <br>
-                                0.364x² + -0.364y² + -0.364z² = 1
+                                <span th:text="${surface.canonicalEquation}"></span>
                             </div>
                             <div class="surface__type">
                                 Тип поверхні: <br>
-                                Гіперболоїд дволистовий
+                                <span th:text="${surface.type}"></span>
                             </div>
                         </div>
                         <div class="surface__image">
@@ -47,53 +48,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="surface">
-                    <div class="surface__header">
-                        <div class="surface__equation">-2x^2 + -7y^2 + 2z^2 + 4xy + 9xz + -2yz + -5x + -3y + -4z + -2 = 0</div>
-                        <div class="surface__icon"><i class="fa-solid fa-caret-down"></i></div>
-                    </div>
-                    <div class="surface__body">
-                        <div class="surface__info">
-                            <div class="surface__canonical">
-                                Канонічне рівняння: <br>
-                                0.364x² + -0.364y² + -0.364z² = 1
-                            </div>
-                            <div class="surface__type">
-                                Тип поверхні: <br>
-                                Гіперболоїд дволистовий
-                            </div>
-                        </div>
-                        <div class="surface__image">
-                            <img th:src="@{/images/surfaces/Hyperboloid_1.png}" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="surface">
-                    <div class="surface__header">
-                        <div class="surface__equation">7x^2 + -6y^2 + 2z^2 + -4xy + 3xz + -5yz + 5x + -6y + 9z + 7 = 0</div>
-                        <div class="surface__icon"><i class="fa-solid fa-caret-down"></i></div>
-                    </div>
-                    <div class="surface__body">
-                        <div class="surface__info">
-                            <div class="surface__canonical">
-                                Канонічне рівняння: <br>
-                                0.364x² + -0.364y² + -0.364z² = 1
-                            </div>
-                            <div class="surface__type">
-                                Тип поверхні: <br>
-                                Гіперболоїд дволистовий
-                            </div>
-                        </div>
-                        <div class="surface__image">
-                            <img th:src="@{/images/surfaces/Hyperboloid_1.png}" />
-                        </div>
-                    </div>
-                </div>
-            
-
-
             </div>
         </div>
     </main>
