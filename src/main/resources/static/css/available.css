@@ -168,77 +168,23 @@ main {
   top: 4px;
 }
 
-.surfaces-list {
+.surfaces {
   margin-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  row-gap: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  row-gap: 30px;
+  -webkit-column-gap: 20px;
+     -moz-column-gap: 20px;
+          column-gap: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .surface {
-  border-radius: 10px;
-  border: 3px solid #122e47;
-}
-.surface__header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 12px 20px;
-  -webkit-transition: background 0.4s;
-  -o-transition: background 0.4s;
-  transition: background 0.4s;
-  margin: -2px;
-  border-radius: 10px;
-}
-.surface__header:hover {
-  background: #122e47;
-}
-.surface__header.fill-bg {
-  background: #122e47;
-  border-radius: 10px 10px 0 0;
-}
-.surface__icon {
-  font-weight: bold;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  -o-transition: transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-}
-.surface__icon.turn-over {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-.surface__body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background: #12161d;
-  opacity: 0;
-  height: 0px;
-  overflow: hidden;
-  -webkit-transition: opacity 1s;
-  -o-transition: opacity 1s;
-  transition: opacity 1s;
-}
-.surface__body.shown {
-  opacity: 1;
-  height: auto;
-  padding: 12px 20px;
-}
-.surface__info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -246,11 +192,27 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  row-gap: 12px;
-  font-size: 15px;
-  line-height: 22.5px;
+  border-radius: 10px;
+  text-align: center;
+  background: #122e47;
+  -webkit-transition: background 1s;
+  -o-transition: background 1s;
+  transition: background 1s;
 }
-.surface__image img {
-  display: block;
-  max-height: 100px;
+.surface:hover {
+  background: #229fff;
+}
+.surface__title {
+  padding: 10px 0;
+}
+.surface__graph {
+  margin: 0 5px;
+  padding: 20px 15px;
+  background: #12161d;
+}
+.surface__graph img {
+  width: 170px;
+}
+.surface__canonical {
+  padding: 10px 0;
 }

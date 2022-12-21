@@ -1,0 +1,43 @@
+@import "resetStyles.scss";
+@import "components.scss";
+
+.surfaces {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    row-gap: 30px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+}
+.surface {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    //border: 5px solid $middle-blue;
+    text-align: center;
+    background: $middle-blue;
+
+    transition: background 1s;
+
+    &:hover {
+        background: $light-blue;
+    }
+
+		&__title {
+            padding: 10px 0;
+		}
+
+		&__graph {
+            margin: 0 5px;
+            padding: 20px 15px;
+            background: $dark-blue;
+
+            & img {
+                width: 170px;
+            }
+		}
+
+		&__canonical {
+            padding: 10px 0;
+		}
+}

@@ -2,7 +2,7 @@
 @import "components.scss";
 
 .surfaces-list {
-    margin-top: 35px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -18,9 +18,8 @@
         justify-content: space-between;
         padding: 12px 20px;
         transition: background .4s;
-        margin: -1px;
+        margin: -2px;
         border-radius: 10px;
-        font-size: $text-size;
 
         &:hover {
             background: $middle-blue;

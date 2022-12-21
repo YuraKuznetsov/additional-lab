@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-    <title>Головна</title>
+    <link rel="stylesheet" th:href="@{/css/available.css}">
+    <title>Поверхні 2 роду</title>
 </head>
 <body>
 <div class="wrapper">
@@ -21,7 +21,63 @@
     </nav>
     <main>
         <div class="container">
-            <h1 class="title">Інформація про кожну поверхню</h1>
+            <h1 class="title">Поверхні другого роду</h1>
+            <div class="surfaces">
+                
+                <div class="surface">
+                    <div class="surface__title">Еліпсоїд</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Ellipsoid.png}"></div>
+                    <div class="surface__canonical">ax² + by² + cz² = 1</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Еліптичний параболоїд</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Elliptic_Paraboloid.png}"></div>
+                    <div class="surface__canonical">ax² + by² - z = 0</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Гіперболічний параболоїд</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Hyperbolic_Paraboloid.png}"></div>
+                    <div class="surface__canonical">ax² - by² - z = 0</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Гіперболоїд однолистовий</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Hyperboloid_1.png}"></div>
+                    <div class="surface__canonical">ax² + by² - cz² = 1</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Гіперболоїд дволистовий</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Hyperboloid_2.png}"></div>
+                    <div class="surface__canonical">ax² + by² - cz² = -1</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Конус</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Cone.png}"></div>
+                    <div class="surface__canonical">ax² + by² - cz² = 0</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Еліптичний циліндр</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Elliptic_Cylinder.png}"></div>
+                    <div class="surface__canonical">ax² + by² = 1</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Гіперболічний циліндр</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Hyperbolic_Cylinder.png}"></div>
+                    <div class="surface__canonical">ax² - by² = 1</div>
+                </div>
+
+                <div class="surface">
+                    <div class="surface__title">Параболічний циліндр</div>
+                    <div class="surface__graph"><img th:src="@{/images/surfaces/Parabolic_Cylinder.png}"></div>
+                    <div class="surface__canonical">x² + 2ay = 1</div>
+                </div>
+            </div>
         </div>
     </main>
     <footer class="footer">
