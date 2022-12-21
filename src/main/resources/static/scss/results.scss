@@ -3,22 +3,28 @@
 
 .surfaces-list {
     margin-top: 35px;
+    display: flex;
+    flex-direction: column-reverse;
+    row-gap: 20px;
 }
 
 
-.surface {  
-    background: $middle-blue;
+.surface {
     border-radius: 10px;
+    border: 3px solid $middle-blue;
 
     &__header {
         display: flex;
         justify-content: space-between;
-        background: $middle-blue;
         padding: 12px 20px;
-        border-radius: 10px;
+        transition: background .4s;
 
-        &:hover > &__body {
-            display: block;
+        &:hover {
+            background: $middle-blue;
+        }
+
+        &.fill-bg {
+            background: $middle-blue;
         }
     }
 
@@ -26,20 +32,50 @@
     }
 
     &__icon {
+        font-weight: bold;
+        transition: transform .5s;
+
+        &.turn-over {
+            transform: rotate(180deg);
+        }
     }
 
     &__body {
         display: flex;
+        justify-content: space-between;
+        background: $dark-blue;
+
+        opacity: 0;
+        height: 0px;
+        overflow: hidden;
+        transition: opacity 1s;
+
+        &.shown {
+            opacity: 1;
+            height: auto;
+            padding: 12px 20px;
+        }
+    }
+
+    &__info {
+        display: flex;
         flex-direction: column;
-        row-gap: 10px;
-        padding: 12px 20px;
-        border-top: 3px solid $dark-blue;
-        display: none;
+        row-gap: 12px;
+        font-size: $text-size;
+        line-height: $text-size * 1.5;
+    }
+
+    &__image {
+        img {
+            display: block;
+            max-height: 100px;
+        }
     }
 
     &__canonical {
     }
 
     &__type {
+
     }
 }
