@@ -40,9 +40,12 @@
                     <span class="coef">d</span>
                     <span class="coef">e</span>
                     <span class="coef">f</span>
-                    повинен бути відмінний від нуля. <br><br>
+                    повинен бути відмінний від нуля. 
+                    <br><br>
+
                     Для визначення типу поверхні, введіть коефіціенти рівняння у форму та натисніть відповідну кнопку. 
-                    Для швидкого тестування, натискайте кнопку "Згенерувати" до тих пір, поки підібране рівняння не здаватиметься для вас підходящим. 
+                    Для швидкого тестування, натискайте кнопку "Згенерувати" до тих пір, поки підібране рівняння не здаватиметься для вас підходящим.
+                    <br>
                     Також можна використати приклади попередньо підготовлених рівнянь, натиснувши на них.
                 </div>
                 <form action="/surface/result" method="post" class="form" name="equation">
@@ -63,23 +66,23 @@
 
                 
                 <div class="surfaces">
-                    <div class="surface button">
+                    <div class="surface button" id="example1">
                         <div class="surface__type">Еліпсоїд</div>
                         <div class="surface__equation">3x² + 2y² + 6z² - 2xy + 4z - 12 = 0</div>
                     </div>
-                    <div class="surface button">
+                    <div class="surface button" id="example2">
                         <div class="surface__type">Еліптичний параболоїд</div>
                         <div class="surface__equation">3x² + 1y² - 5z + 1 = 0</div>
                     </div>
-                    <div class="surface button">
+                    <div class="surface button" id="example3">
                         <div class="surface__type">Гіперболічний параболоїд</div>
                         <div class="surface__equation">2x² - 11y² + 3z - 9 = 0</div>
                     </div>
-                    <div class="surface button">
+                    <div class="surface button" id="example4">
                         <div class="surface__type">Гіперболоїд однолистовий</div>
                         <div class="surface__equation">-3x² + 4z² + 22yz + 10 = 0</div>
                     </div>
-                    <div class="surface button">
+                    <div class="surface button" id="example5">
                         <div class="surface__type">Гіперболоїд дволистовий</div>
                         <div class="surface__equation">-5x² + 23y² + 3z² + 3xy + 1yz + 6z + 7 = 0</div>
                     </div>
@@ -97,6 +100,6 @@
             </div>
         </footer>
     </div>
-    <script type="text/javascript" th:src="@{/js/surface.js}"></script>
+    <script type="text/javascript" th:src="@{/js/surface/index.js}"></script>
 </body>
 </html>
