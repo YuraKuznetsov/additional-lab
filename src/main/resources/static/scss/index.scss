@@ -19,7 +19,7 @@ span.coef {
 }
 
 .form {
-    margin-top: 50px;
+    margin: 40px 0 50px 0; 
     font-size: 18px;
 
     input {
@@ -39,10 +39,14 @@ span.coef {
 }
 
 .submit__button {
+    padding: 10px 15px;
+	border-radius: 10px;
+    font-size: $text-size;
+    font-weight: 500;
+    letter-spacing: 1px;
     color: white;
     background: $light-blue;
     margin-top: 30px;
-
     transition: background .25s, box-shadow .25s;
 
     &:hover {
@@ -52,6 +56,11 @@ span.coef {
 }
 
 .generate__button {
+    padding: 10px 15px;
+	border-radius: 10px;
+    font-size: $text-size;
+    font-weight: 500;
+    letter-spacing: 1px;
     display: inline-block;
     margin-top: 30px;
     margin-left: 20px;
@@ -65,36 +74,40 @@ span.coef {
     }
 }
 
-.equations {
-    margin-top: 20px;
-    overflow: auto;
-    max-height: 250px;
+.text {
+    margin-top: 25px;
+    font-size: $text-size;
+    line-height: 27px;;
+}
 
-    &__list {
-        li {
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            padding: 10px 0;
-            background: none;
+.surfaces {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-top: 35px;
+}
 
-            &:hover {
-                background: white;
-            }
-        }
+.surface {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 3px solid $middle-blue;
+    padding: 12px 20px;
+    transition: background .4s;
+
+    &:hover {
+        border-color: $light-blue;
     }
+
+    &:active {
+    }
+
+		&__type {
+		}
+
+		&__equation {
+		}
 }
 
-.equation {
-    font-weight: 500;
-}
-
-.type {
-    color: rgb(86, 86, 152);
-    font-weight: bold;
-}
 
 
-p.text {
-    margin-top: 50px;
-}

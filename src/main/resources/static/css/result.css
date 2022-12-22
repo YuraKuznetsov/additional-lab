@@ -176,6 +176,7 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: -2px;
 }
 .table__title {
   background: #122e47;
