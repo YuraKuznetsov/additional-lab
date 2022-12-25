@@ -1,8 +1,7 @@
-package com.labs.additional.surface;
+package com.labs.additional.service.surface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.labs.additional.service.surface.CoefficientParser;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;

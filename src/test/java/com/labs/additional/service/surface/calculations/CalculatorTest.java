@@ -1,6 +1,5 @@
-package com.labs.additional.surface.calculations;
+package com.labs.additional.service.surface.calculations;
 
-import com.labs.additional.service.surface.calculations.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

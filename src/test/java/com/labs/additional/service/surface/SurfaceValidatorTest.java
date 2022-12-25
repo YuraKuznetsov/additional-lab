@@ -1,6 +1,5 @@
-package com.labs.additional.surface;
+package com.labs.additional.service.surface;
 
-import com.labs.additional.service.surface.SurfaceValidator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;

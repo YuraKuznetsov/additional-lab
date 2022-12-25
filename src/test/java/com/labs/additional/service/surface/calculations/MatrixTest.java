@@ -1,6 +1,5 @@
-package com.labs.additional.surface.calculations;
+package com.labs.additional.service.surface.calculations;
 
-import com.labs.additional.service.surface.calculations.Matrix;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

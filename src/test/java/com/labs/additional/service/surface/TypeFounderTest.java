@@ -1,6 +1,5 @@
-package com.labs.additional.surface;
+package com.labs.additional.service.surface;
 
-import com.labs.additional.service.surface.TypeFounder;
 import com.labs.additional.service.surface.type.SurfaceType;
 import com.labs.additional.service.surface.type.WideSurfaceType;
 import org.junit.jupiter.api.BeforeEach;
