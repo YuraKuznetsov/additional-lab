@@ -3,8 +3,8 @@ package com.labs.additional.service.surface;
 import com.labs.additional.service.surface.type.WideSurfaceType;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,8 +17,19 @@ class EquationGeneratorTest {
     }
 
     @Test
+    void testUserEquation() {
+        Map<String, String> request = new LinkedHashMap<>();
+        request.put("a11", "3");
+        request.put("a33", "-8");
+        request.put("a23", "3");
+        request.put("a14", "-2");
+        request.put("a44", "4");
+        assertEquals("3x² - 8z² + 3yz - 2x + 4 = 0", EquationGenerator.getUserEquation(request));
+    }
+
+    @Test
     void ignoreZeroAndEmptyCoefficients() {
-        TreeMap<String, String> request = new TreeMap<>();
+        Map<String, String> request = new LinkedHashMap<>();
         request.put("a11", "0");
         request.put("a22", "");
         request.put("a23", "2");
