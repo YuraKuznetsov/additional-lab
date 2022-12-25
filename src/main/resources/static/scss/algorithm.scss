@@ -1,0 +1,62 @@
+@import "resetStyles.scss";
+@import "components.scss";
+
+.text {
+    margin-top: 35px;
+    font-size: $text-size;
+    line-height: 22px;
+}
+
+.row {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+
+    &__item {
+
+    }
+}
+
+.matrix-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 8px;
+
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    padding: 0 5px;
+    margin: 7px 0;
+}
+
+.matrix-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 8px;
+
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    padding: 0 5px;
+    margin: 7px 0;
+}
+
+.matrix-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 8px;
+
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    padding: 0 5px;
+    margin: 7px 0;
+}
+
+.cell {
+    text-align: center;
+}
+
+a {
+    color: $light-light-blue;
+}

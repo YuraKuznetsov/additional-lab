@@ -155,11 +155,6 @@ main {
 .button {
   position: relative;
   top: 0px;
-  padding: 10px 15px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 1px;
   -webkit-transition: top 0.2s;
   -o-transition: top 0.2s;
   transition: top 0.2s;

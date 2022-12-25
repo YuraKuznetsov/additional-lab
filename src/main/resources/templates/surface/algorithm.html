@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/algorithm.css}">
     <title>Головна</title>
 </head>
 <body>
@@ -22,6 +22,187 @@
     <main>
         <div class="container">
             <h1 class="title">Алгоритм знаходження типу поверхні</h1>
+            <div class="text">
+                Маємо рівняння виду <br>
+                a₁₁x² + 2a₁₂xy + 2a₁₃xz + 2a₁₄x + a₂₂y² + 2a₂₃yz + 2a₂₄y + a₃₃z² + 2a₃₄z + a₄₄ = 0
+                <br><br>
+
+                Спочатку розраховуємо значення I та K за наступними формулами<br>
+                <div class="row">
+                    <div class="row__item">I₁ =</div>
+                    <div class="row__item">a₁₁ + a₂₂ + a₃₃</div>
+                </div>
+
+                <div class="row">
+                    <div class="row__item">I₂ =</div>
+                    <div class="row__item">
+                        <div class="matrix-2">
+                            <div class="cell">a₁₁</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₂₂</div>
+                        </div>
+                    </div>
+                    <div class="row__item">+</div>
+                    <div class="row__item">
+                        <div class="matrix-2">
+                            <div class="cell">a₂₂</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₃₃</div>
+                        </div>
+                    </div>
+                    <div class="row__item">+</div>
+                    <div class="row__item">
+                        <div class="matrix-2">
+                            <div class="cell">a₁₁</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₃₃</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row__item">I₃ = </div>
+                    <div class="row__item">
+                        <div class="matrix-3">
+                            <div class="cell">a₁₁</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₂₂</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₃₃</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row__item">I₄ =</div>
+                    <div class="row__item">
+                        <div class="matrix-4">
+                            <div class="cell">a₁₁</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₂₂</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₃₃</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₄₄</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row__item">K₂ =</div>
+                    <div class="row__item">
+                        <div class="matrix-2">
+                            <div class="cell">a₁₁</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₄₄</div>
+                        </div>
+                    </div>
+                    <div class="row__item">+</div>
+                    <div class="row__item">
+                        <div class="matrix-2">
+                            <div class="cell">a₂₂</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₄₄</div>
+                        </div>
+                    </div>
+                    <div class="row__item">+</div>
+                    <div class="row__item">
+                        <div class="matrix-2">
+                            <div class="cell">a₃₃</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₄₄</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row__item">K₃ =</div>
+                    <div class="row__tem">
+                        <div class="matrix-3">
+                            <div class="cell">a₁₁</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₁₂</div>
+                            <div class="cell">a₂₂</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₄₄</div>
+                        </div>
+                    </div>
+                    <div class="row__item">+</div>
+                    <div class="row__tem">
+                        <div class="matrix-3">
+                            <div class="cell">a₂₂</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₂₃</div>
+                            <div class="cell">a₃₃</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₂₄</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₄₄</div>
+                        </div>
+                    </div>
+                    <div class="row__item">+</div>
+                    <div class="row__tem">
+                        <div class="matrix-3">
+                            <div class="cell">a₁₁</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₁₃</div>
+                            <div class="cell">a₃₃</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₁₄</div>
+                            <div class="cell">a₃₄</div>
+                            <div class="cell">a₄₄</div>
+                        </div>
+                    </div>
+                </div> 
+                <br>
+
+                Далі сформуємо кубічне рівняння на основі значень I <br>
+                λ³ - I₁λ² + I₂λ - I₃ = 0 <br>
+                Після цього нам потрібно знайти корені λ.<a href="http://www.sopromat.info/cubic-equations-online-048.html">Тут</a> можна дізнатися як розв'язуються кубічні рівняння
+                <br><br>
+
+                Якщо I₃ != 0<br>
+                Ми маємо три дійсні ненульові корені λ, та наше канонічне рівняння матиме вигляд: λ₁x² + λ₂y² + λ₃z² + I₄ / I₃ = 0
+                <br><br>
+
+                Якщо I₃ == 0 && I₂ != 0 && I₄ != 0<br>
+                У нас знову три дійсні ненульові корені λ, але канонічне рівняння має наступний вигляд: λ₁x² + λ₂y² + 2z * (-I₄ / I₂)^(1/2) = 0
+                <br><br>
+
+                Якщо I₃ == 0 && I₂ != 0 && I₄ == 0<br>
+                У цьому випадку ми три дійсні корені λ, але один з них дорівнює нулю. Отже, вигляд канонічного рівняння: λ₁x² + λ₂y² + K₃ / I₂ = 0
+                <br><br>
+
+                Якщо I₃ == 0 && I₂ == 0 && I₄ == 0 && I₁ != 0 && K₃ != 0<br>
+                Маємо всього один дійсний ненульовий корінь λ. Канонічне рівняння: λ₁x² + 2y * (-K₃ / I₁)^(1/2) = 0
+                <br><br>
+
+                У всіх інших випадках маємо звичайну площину, яка не є поверхнею другого порядку
+            </div>
         </div>
     </main>
     <footer class="footer">

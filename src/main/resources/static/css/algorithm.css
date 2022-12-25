@@ -163,83 +163,60 @@ main {
   top: 4px;
 }
 
-.table {
+.text {
   margin-top: 35px;
-  border: 3px solid #122e47;
+  font-size: 15px;
+  line-height: 22px;
 }
-.table__head {
+
+.row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: -2px;
-}
-.table__title {
-  background: #122e47;
-  padding: 6px 10px;
-  border-bottom: 3px solid #122e47;
-}
-.table__body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-
-.title-left {
-  -webkit-box-flex: 65%;
-      -ms-flex: 65%;
-          flex: 65%;
+.matrix-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 8px;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  padding: 0 5px;
+  margin: 7px 0;
 }
 
-.title-right {
-  -webkit-box-flex: 35%;
-      -ms-flex: 35%;
-          flex: 35%;
+.matrix-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 8px;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  padding: 0 5px;
+  margin: 7px 0;
+}
+
+.matrix-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 8px;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  padding: 0 5px;
+  margin: 7px 0;
+}
+
+.cell {
   text-align: center;
 }
 
-.body-left {
-  -webkit-box-flex: 65%;
-      -ms-flex: 65%;
-          flex: 65%;
-  font-size: 15px;
-  line-height: 22.5px;
-  padding: 15px 10px;
-}
-
-.body-right {
-  -webkit-box-flex: 35%;
-      -ms-flex: 35%;
-          flex: 35%;
-  padding: 15px 10px;
-}
-
-.image-box img {
-  width: 100%;
-}
-
-.text .small {
-  font-size: 11px;
-  color: #000;
-}
-
-.important {
-  color: #4eaffa;
-  font-weight: 500;
-}
-
-.answer {
-  color: #229fff;
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.text {
-  margin-top: 30px;
-}
-
-.link {
+a {
   color: #4eaffa;
 }
