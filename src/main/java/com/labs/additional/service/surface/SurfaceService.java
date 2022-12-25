@@ -15,7 +15,7 @@ public class SurfaceService {
     private final TypeFounder typeFounder = new TypeFounder();
 
     public String getUserEquation(Map<String, String> request) {
-        return EquationGenerator.getUserEquation(request);
+        return EquationGenerator.generateUserEquation(request);
     }
 
     public Map<String, Double> getImportantValues(Map<String, String> request) {

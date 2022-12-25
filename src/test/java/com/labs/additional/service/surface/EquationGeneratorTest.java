@@ -13,7 +13,7 @@ class EquationGeneratorTest {
     @Test
     void emptyUserEquation_whenEmptyRequest() {
         Map<String, String> request = Map.of();
-        assertEquals("", EquationGenerator.getUserEquation(request));
+        assertEquals("", EquationGenerator.generateUserEquation(request));
     }
 
     @Test
@@ -24,32 +24,33 @@ class EquationGeneratorTest {
         request.put("a23", "3");
         request.put("a14", "-2");
         request.put("a44", "4");
-        assertEquals("3x² - 8z² + 3yz - 2x + 4 = 0", EquationGenerator.getUserEquation(request));
+        assertEquals("3x² - 8z² + 3yz - 2x + 4 = 0", EquationGenerator.generateUserEquation(request));
     }
 
     @Test
-    void ignoreZeroAndEmptyCoefficients() {
+    void ignoreZeroAndEmptyCoefficientsInUserEquation() {
         Map<String, String> request = new LinkedHashMap<>();
         request.put("a11", "0");
         request.put("a22", "");
         request.put("a23", "2");
         request.put("a44", "4");
 
-        assertEquals("2yz + 4 = 0", EquationGenerator.getUserEquation(request));
+        assertEquals("2yz + 4 = 0", EquationGenerator.generateUserEquation(request));
     }
 
     @Test
-    void testGetCubicEquation() {
+    void testCubicEquation() {
         Map<String, Double> values = Map.of("I1", 4d, "I2", -3.4, "I3", -10.2);
         assertEquals("λ³ + -4.0λ² + -3.4λ + 10.2 = 0", EquationGenerator.getCubicEquation(values));
     }
 
     @Test
-    void testCanonical_whenTypeIsPlane() {
+    void canonicalEquation_whenTypeIsPlane() {
         Map<String, Double> values = Map.of("I1", 4d, "I2", 0d, "I3", 0d, "I4", 0d,
                                             "K2", 0d, "K3", 0d,
                                             "lambda1", 0d, "lambda2", 0d, "lambda3", 0d);
-
-        assertEquals("Не підтримується", EquationGenerator.getCanonical(values, WideSurfaceType.PLANE));
+        String expected = "Не підтримується";
+        String actual = EquationGenerator.getCanonical(values, WideSurfaceType.PLANE);
+        assertEquals(expected, actual);
     }
 }
