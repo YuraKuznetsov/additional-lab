@@ -20,7 +20,6 @@ const submitButton = document.querySelector(".submit__button");
 function isImportantCoefficient() {
     for (let i = 0; i < 6; i++) {
         let value = inputs[i].value;
-        console.log(value);
         if (value !== "" && value !== "0") {
             return true;
         }
