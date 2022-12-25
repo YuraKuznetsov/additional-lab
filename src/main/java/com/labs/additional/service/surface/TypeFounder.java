@@ -25,11 +25,11 @@ public class TypeFounder {
             return WideSurfaceType.FULL_SQUARE;
         }
 
-        if (I2 !=0 && I4 != 0) {
+        if (I2 != 0 && I4 != 0) {
             return WideSurfaceType.PARABOLOID;
         }
 
-        if (I2 !=0 && K3 != 0) {
+        if (I2 != 0 && K3 != 0) {
             return WideSurfaceType.CYLINDER;
         }
 
