@@ -31,14 +31,7 @@
                 <div class="table__body">
                     <div class="body-left">
                         Введене рівняння: <br>
-                        <span class="important" th:text="${userEquation}"></span> <br><br>
-
-                        Знайдемо коефіцієнти рівняння: <br>
-                        a₁₁ = 1;
-                        a₁₂ = 4;
-                        a₁₃ = -5;
-                        a₁₄ = 0;
-                        ...
+                        <span class="important" th:text="${userEquation}"></span>
                         <br><br>
 
                         Розрахуємо I та K: <br>
@@ -58,23 +51,24 @@
                         λ<span class="small">3</span> = <span th:text="${values.lambda3}"></span>
                         <br><br>
 
-                        Оскільки I<span class="small">3</span> не дорівнює нулеві, маємо канонічне рівняння: <br>
-                        λ1x² + λ2y² + λ3z² + I4 / I3 = 0
+                        <span th:text="${canonicalExplain}"></span> <br>
+                        <span th:text="${canonicalFormula}"></span>
                         <br><br>
 
                         Підставимо змінні: <br>
-                        12x² + 3y² + 7z² + -5 = 0
+                        <span th:text="${simpleCanonicalEquation}"></span>
                         <br><br>
 
                         Скоротимо та отримаємо звичне канонічне рівняння: <br>
-                        <span class="important" th:text="${canonical}"></span> <br><br>
+                        <span class="important" th:text="${canonicalEquation}"></span>
+                        <br><br>
                         
-                        Тип поверхні: <span class="answer" th:text="${type}"></span>
+                        Тип поверхні: <span class="answer" th:text="${surfaceType}"></span>
                     </div>
 
                     <div class="body-right">
                         <div class="image-box">
-                            <img th:src="@{/images/surfaces/Hyperboloid_1.png}" />
+                            <img th:src="${imgSrc}" />
                         </div>
                     </div>
                 </div>

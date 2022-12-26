@@ -17,7 +17,7 @@ public class SurfaceController {
     SurfaceService surfaceService = new SurfaceService();
 
     @GetMapping("/surface")
-    public String index(Model model) {
+    public String index() {
         return "surface/index";
     }
 
@@ -49,8 +49,12 @@ public class SurfaceController {
         String userEquation = surfaceService.getUserEquation(request);
         Map<String, Double> importantValues = surfaceService.getImportantValues(request);
         String cubicEquation = surfaceService.getCubicEquation(request);
+        String canonicalExplain = surfaceService.getCanonicalExplain(request);
+        String canonicalFormula = surfaceService.getCanonicalFormula(request);
+        String simpleCanonicalEquation = surfaceService.getSimpleCanonical(request);
         String canonicalEquation = surfaceService.getCanonicalEquation(request);
         String surfaceType = surfaceService.getType(request);
+        String imgSrc = surfaceService.getImgSrc(request);
 
         Surface surface = new Surface(userEquation, surfaceType, canonicalEquation);
         surfaceService.saveSurface(surface);
@@ -58,8 +62,12 @@ public class SurfaceController {
         model.addAttribute("userEquation", userEquation);
         model.addAttribute("values", importantValues);
         model.addAttribute("cubicEquation", cubicEquation);
-        model.addAttribute("canonical", canonicalEquation);
-        model.addAttribute("type", surfaceType);
+        model.addAttribute("canonicalExplain", canonicalExplain);
+        model.addAttribute("canonicalFormula", canonicalFormula);
+        model.addAttribute("simpleCanonicalEquation", simpleCanonicalEquation);
+        model.addAttribute("canonicalEquation", canonicalEquation);
+        model.addAttribute("surfaceType", surfaceType);
+        model.addAttribute("imgSrc", imgSrc);
 
         return "surface/result";
     }

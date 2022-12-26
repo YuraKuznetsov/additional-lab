@@ -45,6 +45,16 @@ class EquationGeneratorTest {
     }
 
     @Test
+    void testSimpleCanonicalEquation() {
+        Map<String, Double> values = Map.of("I1", 8d, "I2", -80d, "I3", -24d, "I4", -97d,
+                "K2", 17.75, "K3", -324.5,
+                "lambda1", .29, "lambda2", -6d, "lambda3", 13.71);
+        String expected = "0.29x² + -6.0y² + 13.71z² + 4.04 = 0";
+        String actual = EquationGenerator.getSimpleCanonical(values, WideSurfaceType.FULL_SQUARE);
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void canonicalEquation_whenTypeIsPlane() {
         Map<String, Double> values = Map.of("I1", 4d, "I2", 0d, "I3", 0d, "I4", 0d,
                                             "K2", 0d, "K3", 0d,

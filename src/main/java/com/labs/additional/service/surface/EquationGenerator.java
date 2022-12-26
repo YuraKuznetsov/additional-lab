@@ -64,6 +64,37 @@ public class EquationGenerator {
         return "λ³ + " + -I1 + "λ² + " + I2 + "λ + " + -I3 + " = 0";
     }
 
+    public static String getSimpleCanonical(Map<String, Double> values, WideSurfaceType wideSurfaceType) {
+        double I1 = values.get("I1"), I2 = values.get("I2"), I3 = values.get("I3"), I4 = values.get("I4"),
+                K3 = values.get("K3"),
+                lambda1 = values.get("lambda1"), lambda2 = values.get("lambda2"), lambda3 = values.get("lambda3");
+
+        double coefficient;
+
+        switch (wideSurfaceType) {
+            case FULL_SQUARE -> {
+                coefficient = Calculator.round2(I4 / I3);
+
+                return lambda1 + "x² + " + lambda2 + "y² + " + lambda3 + "z² + " + coefficient + " = 0";
+            }
+            case CYLINDER -> {
+                coefficient = Calculator.round2(K3 / I2);
+                return lambda1 + "x² + " + lambda2 + "y² + " + coefficient + " = 0";
+            }
+            case PARABOLOID -> {
+                coefficient = Calculator.round3(2 * Math.sqrt(-I4 / I2));
+                return lambda1 + "x² + " + lambda2 + "y² + " + coefficient + "z = 0";
+            }
+            case PARABOLIC_CYLINDER -> {
+                coefficient = Calculator.round3(2 * Math.sqrt(-K3 / I1));
+                return lambda1 + "x² + " + coefficient + "y = 0";
+            }
+            default -> {
+                return "Не підтримується";
+            }
+        }
+    }
+
     public static String getCanonical(Map<String, Double> values, WideSurfaceType wideSurfaceType) {
         double I1 = values.get("I1"), I2 = values.get("I2"), I3 = values.get("I3"), I4 = values.get("I4"),
                 K3 = values.get("K3"),
@@ -72,32 +103,32 @@ public class EquationGenerator {
         double coefficient;
 
         switch (wideSurfaceType) {
-            case FULL_SQUARE:
-                coefficient = I4/I3;
+            case FULL_SQUARE -> {
+                coefficient = I4 / I3;
 
-                // Циліндр
                 if (coefficient == 0.0) {
-                    return lambda1 + "x² + " + lambda2 + "y² + " + lambda3  + "z² = 0";
+                    return lambda1 + "x² + " + lambda2 + "y² + " + lambda3 + "z² = 0";
                 }
-
                 return Calculator.round3(lambda1 / -coefficient) + "x² + "
                         + Calculator.round3(lambda2 / -coefficient) + "y² + "
                         + Calculator.round3(lambda3 / -coefficient) + "z² = 1";
-
-            case CYLINDER:
-                coefficient = K3/I2;
+            }
+            case CYLINDER -> {
+                coefficient = K3 / I2;
                 return Calculator.round3(lambda1 / -coefficient) + "x² + "
                         + Calculator.round3(lambda2 / -coefficient) + "y² = 1";
-
-            case PARABOLOID:
-                coefficient = Calculator.round3(2 * Math.sqrt(-I4/I2));
-                return lambda1 + "x² + " + lambda2 + "y² + " + coefficient  + "z = 0";
-
-            case PARABOLIC_CYLINDER:
-                coefficient = Calculator.round3(2 * Math.sqrt(-K3/I1));
+            }
+            case PARABOLOID -> {
+                coefficient = Calculator.round3(2 * Math.sqrt(-I4 / I2));
+                return lambda1 + "x² + " + lambda2 + "y² + " + coefficient + "z = 0";
+            }
+            case PARABOLIC_CYLINDER -> {
+                coefficient = Calculator.round3(2 * Math.sqrt(-K3 / I1));
                 return lambda1 + "x² + " + coefficient + "y = 0";
+            }
+            default -> {
+                return "Не підтримується";
+            }
         }
-
-        return "Не підтримується";
     }
 }
