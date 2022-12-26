@@ -128,7 +128,7 @@ public class SurfaceService {
                 return pathToFolder + "Parabolic_Cylinder.png";
             }
             default -> {
-                return "";
+                return " ";
             }
         }
     }

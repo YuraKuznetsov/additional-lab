@@ -21,8 +21,9 @@ public class SurfaceRepository {
         String userEquation = surface.getUserEquation();
         String canonicalEquation = surface.getCanonicalEquation();
         String surfaceType = surface.getSurfaceType();
+        String imgSrc = surface.getImgSrc();
 
-        return String.format("%s,%s,%s\n", userEquation, canonicalEquation, surfaceType);
+        return String.format("%s,%s,%s,%s\n", userEquation, canonicalEquation, surfaceType, imgSrc);
     }
 
     private void appendRow(String row) throws IOException {
@@ -49,6 +50,6 @@ public class SurfaceRepository {
 
     private Surface getSurface(String line) {
         String[] splitLine = line.split(",");
-        return new Surface(splitLine[0], splitLine[1], splitLine[2]);
+        return new Surface(splitLine[0], splitLine[1], splitLine[2], splitLine[3]);
     }
 }

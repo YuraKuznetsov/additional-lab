@@ -66,7 +66,7 @@ public class SurfaceController {
         model.addAttribute("surfaceType", surfaceType);
         model.addAttribute("imgSrc", imgSrc);
 
-        surfaceService.saveSurface(new Surface(userEquation, canonicalEquation, surfaceType));
+        surfaceService.saveSurface(new Surface(userEquation, canonicalEquation, surfaceType, imgSrc));
 
         return "surface/result";
     }
