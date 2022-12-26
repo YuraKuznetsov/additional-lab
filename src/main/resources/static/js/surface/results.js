@@ -32,8 +32,13 @@ class SurfaceMenu {
     }
 }
 
+const surfacesList = document.querySelector(".surfaces-list");
 const surfaces = document.querySelectorAll(".surface");
 
 for (let surface of surfaces) {
     new SurfaceMenu(surface).activate();
+}
+
+if (surfaces.length === 0) {
+    surfacesList.innerHTML = "Пусто... Ви ще не визначали жодної поверхні."
 }

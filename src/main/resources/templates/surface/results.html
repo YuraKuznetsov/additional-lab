@@ -24,8 +24,8 @@
         <div class="container">
             <h1 class="title">Усі визначені та збережені поверхні</h1>
 
-            <div class="surfaces-list" th:each="surface : ${surfaces}">
-                <div class="surface">
+            <div class="surfaces-list">
+                <div class="surface" th:each="surface : ${surfaces}">
                     <div class="surface__header">
                         <div class="surface__equation">
                             <span th:text="${surface.userEquation}"></span>
