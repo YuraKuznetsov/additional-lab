@@ -29,23 +29,6 @@ public class SurfaceService {
         return EquationGenerator.getCubicEquation(values);
     }
 
-    public List<Surface> getAllSurfaces() {
-        try {
-            return repository.getAllSurfaces();
-        } catch (IOException e) {
-            System.out.println("Can't get surfaces!");
-            return List.of();
-        }
-    }
-
-    public void saveSurface(Surface surface) {
-        try {
-            repository.saveSurface(surface);
-        } catch (IOException e) {
-            System.out.println("Can't save surface");
-        }
-    }
-
     public String getCanonicalExplain(Map<String, String> request) {
         Map<String, Double> values = getImportantValues(request);
         typeFounder.setValues(values);
@@ -147,6 +130,23 @@ public class SurfaceService {
             default -> {
                 return "";
             }
+        }
+    }
+
+    public List<Surface> getAllSurfaces() {
+        try {
+            return repository.getAllSurfaces();
+        } catch (IOException e) {
+            System.out.println("Can't get surfaces!");
+            return List.of();
+        }
+    }
+
+    public void saveSurface(Surface surface) {
+        try {
+            repository.saveSurface(surface);
+        } catch (IOException e) {
+            System.out.println("Can't save surface");
         }
     }
 }

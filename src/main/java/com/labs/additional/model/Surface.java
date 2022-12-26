@@ -1,22 +1,22 @@
 package com.labs.additional.model;
 
 public class Surface {
-    private final String equation;
-    private final String type;
+    private final String userEquation;
     private final String canonicalEquation;
+    private final String surfaceType;
 
-    public Surface(String equation, String  type, String canonicalEquation) {
-        this.equation = equation;
-        this.type = type;
+    public Surface(String userEquation, String canonicalEquation, String surfaceType) {
+        this.userEquation = userEquation;
         this.canonicalEquation = canonicalEquation;
+        this.surfaceType = surfaceType;
     }
 
-    public String getEquation() {
-        return equation;
+    public String getUserEquation() {
+        return userEquation;
     }
 
-    public String getType() {
-        return type;
+    public String getSurfaceType() {
+        return surfaceType;
     }
 
     public String getCanonicalEquation() {

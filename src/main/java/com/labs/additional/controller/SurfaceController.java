@@ -56,9 +56,6 @@ public class SurfaceController {
         String surfaceType = surfaceService.getType(request);
         String imgSrc = surfaceService.getImgSrc(request);
 
-        Surface surface = new Surface(userEquation, surfaceType, canonicalEquation);
-        surfaceService.saveSurface(surface);
-
         model.addAttribute("userEquation", userEquation);
         model.addAttribute("values", importantValues);
         model.addAttribute("cubicEquation", cubicEquation);
@@ -68,6 +65,8 @@ public class SurfaceController {
         model.addAttribute("canonicalEquation", canonicalEquation);
         model.addAttribute("surfaceType", surfaceType);
         model.addAttribute("imgSrc", imgSrc);
+
+        surfaceService.saveSurface(new Surface(userEquation, canonicalEquation, surfaceType));
 
         return "surface/result";
     }
