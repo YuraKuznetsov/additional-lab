@@ -59,16 +59,13 @@ public class TypeFounder {
 
     private SurfaceType findFullSquareType() {
         double sign1 = Math.signum(lambda1), sign2 = Math.signum(lambda2), sign3 = Math.signum(lambda3);
-        boolean sameSign = sign1 == sign2 && sign1 == sign3;
+        boolean sameSign = ( (sign1 == sign2) && (sign1 == sign3) );
         double value = I4 / I3;
         double valueSing = Math.signum(value);
 
-        // Сфероїд та його підвиди
         if (sameSign) {
-            if (value >= 0) return SurfaceType.IMAGINARY_ELLIPSOID;
-            if (lambda1 == lambda2 && lambda1 == lambda3) return SurfaceType.SPHERE;
-            if (lambda1 == lambda2 || lambda1 == lambda3 || lambda2 == lambda3) return SurfaceType.SPHEROID;
-            return SurfaceType.ELLIPSOID;
+            if (sign1 == valueSing) return SurfaceType.IMAGINARY_ELLIPSOID;
+            return findExistingEllipsoidType();
         }
 
         if (value == 0) {
@@ -81,6 +78,12 @@ public class TypeFounder {
         }
 
         return SurfaceType.ONE_LEAF_HYPERBOLOID;
+    }
+
+    private SurfaceType findExistingEllipsoidType() {
+        if (lambda1 == lambda2 && lambda1 == lambda3) return SurfaceType.SPHERE;
+        if (lambda1 == lambda2 || lambda1 == lambda3 || lambda2 == lambda3) return SurfaceType.SPHEROID;
+        return SurfaceType.ELLIPSOID;
     }
 
     private SurfaceType findParaboloidType() {
