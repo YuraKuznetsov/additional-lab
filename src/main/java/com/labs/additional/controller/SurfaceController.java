@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
@@ -13,16 +14,17 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/surface")
 public class SurfaceController {
 
     SurfaceService surfaceService = new SurfaceService();
 
-    @GetMapping("/surface")
+    @GetMapping("/")
     public String index() {
         return "surface/index";
     }
 
-    @GetMapping("/surface/results")
+    @GetMapping("/results")
     public String results(Model model) {
         List<Surface> surfaces = surfaceService.getAllSurfaces();
         Collections.reverse(surfaces);
@@ -31,17 +33,17 @@ public class SurfaceController {
         return "surface/results";
     }
 
-    @GetMapping("/surface/available")
+    @GetMapping("/available")
     public String available() {
         return "surface/available";
     }
 
-    @GetMapping("/surface/algorithm")
+    @GetMapping("/algorithm")
     public String algorithm() {
         return "surface/algorithm";
     }
 
-    @PostMapping("/surface/result")
+    @PostMapping("/result")
     public String result(@RequestParam Map<String, String> request, Model model) {
         SurfaceValidator validator = new SurfaceValidator(request);
         if (!validator.isCorrectRequest()) {
