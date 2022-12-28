@@ -6,6 +6,7 @@ import com.labs.additional.service.surface.calculations.Calculator;
 import com.labs.additional.service.surface.type.WideSurfaceType;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -135,7 +136,9 @@ public class SurfaceService {
 
     public List<Surface> getAllSurfaces() {
         try {
-            return repository.getAllSurfaces();
+            List<Surface> surfaces = repository.getAllSurfaces();
+            Collections.reverse(surfaces);
+            return surfaces;
         } catch (IOException e) {
             System.out.println("Can't get surfaces!");
             return List.of();
