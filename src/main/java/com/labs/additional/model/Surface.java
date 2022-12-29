@@ -1,7 +1,5 @@
 package com.labs.additional.model;
 
-import com.labs.additional.service.surface.type.SurfaceType;
-
 import java.util.Map;
 
 public class Surface {
@@ -12,12 +10,12 @@ public class Surface {
     private final String canonicalEquationFormula;
     private final String simpleCanonicalEquation;
     private final String canonicalEquation;
-    private final SurfaceType surfaceType;
+    private final String surfaceType;
     private final String imgSrc;
 
     public Surface(String userEquation, Map<String, Double> values, String cubicEquation,
                    String canonicalEquationExplain, String canonicalEquationFormula, String simpleCanonicalEquation,
-                   String canonicalEquation, SurfaceType surfaceType, String imgSrc) {
+                   String canonicalEquation, String surfaceType, String imgSrc) {
 
         this.userEquation = userEquation;
         this.values = values;
@@ -58,11 +56,26 @@ public class Surface {
         return canonicalEquation;
     }
 
-    public SurfaceType getSurfaceType() {
+    public String getSurfaceType() {
         return surfaceType;
     }
 
     public String getImgSrc() {
         return imgSrc;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Surface surface = (Surface) o;
+
+        return userEquation.equals(surface.userEquation);
+    }
+
+    @Override
+    public int hashCode() {
+        return userEquation.hashCode();
     }
 }
