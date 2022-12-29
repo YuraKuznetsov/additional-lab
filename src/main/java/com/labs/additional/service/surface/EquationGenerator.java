@@ -1,6 +1,5 @@
 package com.labs.additional.service.surface;
 
-import com.labs.additional.service.surface.calculations.Calculator;
 import com.labs.additional.service.surface.type.WideSurfaceType;
 
 import java.util.Map;
@@ -73,20 +72,20 @@ public class EquationGenerator {
 
         switch (wideSurfaceType) {
             case FULL_SQUARE -> {
-                coefficient = Calculator.round2(I4 / I3);
+                coefficient = round2(I4 / I3);
 
                 return lambda1 + "x² + " + lambda2 + "y² + " + lambda3 + "z² + " + coefficient + " = 0";
             }
             case CYLINDER -> {
-                coefficient = Calculator.round2(K3 / I2);
+                coefficient = round2(K3 / I2);
                 return lambda1 + "x² + " + lambda2 + "y² + " + coefficient + " = 0";
             }
             case PARABOLOID -> {
-                coefficient = Calculator.round3(2 * Math.sqrt(-I4 / I2));
+                coefficient = round3(2 * Math.sqrt(-I4 / I2));
                 return lambda1 + "x² + " + lambda2 + "y² + " + coefficient + "z = 0";
             }
             case PARABOLIC_CYLINDER -> {
-                coefficient = Calculator.round3(2 * Math.sqrt(-K3 / I1));
+                coefficient = round3(2 * Math.sqrt(-K3 / I1));
                 return lambda1 + "x² + " + coefficient + "y = 0";
             }
             default -> {
@@ -109,26 +108,36 @@ public class EquationGenerator {
                 if (coefficient == 0.0) {
                     return lambda1 + "x² + " + lambda2 + "y² + " + lambda3 + "z² = 0";
                 }
-                return Calculator.round3(lambda1 / -coefficient) + "x² + "
-                        + Calculator.round3(lambda2 / -coefficient) + "y² + "
-                        + Calculator.round3(lambda3 / -coefficient) + "z² = 1";
+                return round3(lambda1 / -coefficient) + "x² + "
+                        + round3(lambda2 / -coefficient) + "y² + "
+                        + round3(lambda3 / -coefficient) + "z² = 1";
             }
             case CYLINDER -> {
                 coefficient = K3 / I2;
-                return Calculator.round3(lambda1 / -coefficient) + "x² + "
-                        + Calculator.round3(lambda2 / -coefficient) + "y² = 1";
+                return round3(lambda1 / -coefficient) + "x² + "
+                        + round3(lambda2 / -coefficient) + "y² = 1";
             }
             case PARABOLOID -> {
-                coefficient = Calculator.round3(2 * Math.sqrt(-I4 / I2));
+                coefficient = round3(2 * Math.sqrt(-I4 / I2));
                 return lambda1 + "x² + " + lambda2 + "y² + " + coefficient + "z = 0";
             }
             case PARABOLIC_CYLINDER -> {
-                coefficient = Calculator.round3(2 * Math.sqrt(-K3 / I1));
+                coefficient = round3(2 * Math.sqrt(-K3 / I1));
                 return lambda1 + "x² + " + coefficient + "y = 0";
             }
             default -> {
                 return "Не підтримується";
             }
         }
+    }
+
+    private static double round2(double value) {
+        value = Math.round(value * 100);
+        return value / 100;
+    }
+
+    private static double round3(double value) {
+        value = Math.round(value * 1000);
+        return value / 1000;
     }
 }

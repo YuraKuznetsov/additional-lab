@@ -27,7 +27,7 @@ public class CubicEquationSolver {
             findRootsWithNegativeDeterminant();
         }
 
-        return getRoots();
+        return getSuitableRoots();
     }
 
     private void divideEquationCoefficients() {
@@ -64,7 +64,7 @@ public class CubicEquationSolver {
         x3 = (2.0 / Math.sqrt(3)) * (Math.sqrt(-p) * Math.cos((1 / 3.0) * Math.asin(((3 * Math.sqrt(3) * q) / (2 * Math.pow(Math.pow(-p, (double) 1 / 2), 3)))) + (Math.PI / 6))) - (a / 3.0);
     }
 
-    private List<Double> getRoots() {
+    private List<Double> getSuitableRoots() {
         List<Double> result = new ArrayList<>();
 
         if (isSuitableRoot(x1)) {

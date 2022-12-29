@@ -58,7 +58,8 @@ public class Calculator {
     }
 
     private void calcLambdas() {
-        List<Double> cubicRoots = EquationSolver.cubicEquation(1, -I1, I2, -I3);
+        CubicEquationSolver cubicEquationSolver = new CubicEquationSolver();
+        List<Double> cubicRoots = cubicEquationSolver.solve(1, -I1, I2, -I3);
 
         if (cubicRoots.size() >= 1) {
             lambda1 = cubicRoots.get(0);
@@ -71,16 +72,9 @@ public class Calculator {
         }
     }
 
-    public static double round2(double value) {
+    private double round2(double value) {
         value = Math.round(value * 100);
-        value /= 100;
-        return value;
-    }
-
-    public static double round3(double value) {
-        value = Math.round(value * 1000);
-        value /= 1000;
-        return value;
+        return value / 100;
     }
 
     public void setCoefficients(Map<String, Double> coefficients) {
