@@ -4,60 +4,56 @@ import java.util.List;
 import java.util.Map;
 
 public class Calculator {
-    private Map<String, Double> coefficients;
-    private double[][] matrix3 = new double[3][3], matrix4 = new double[4][4];
+    private final double a11, a12, a13, a14, a22, a23, a24, a33, a34, a44;
     private double I1, I2, I3, I4, K2, K3, lambda1, lambda2, lambda3;
 
-    public Map<String, Double> calcValues() {
-        if (coefficients == null) throw new RuntimeException("Calculator doesn't have coefficients");
-        fillMatrices();
-        defineI();
-        defineK();
-        calcLambdas();
-        return Map.of(
-                "I1", round2(I1), "I2", round2(I2), "I3", round2(I3), "I4", round2(I4),
-                "K2", round2(K2), "K3", round2(K3),
-                "lambda1", round2(lambda1), "lambda2", round2(lambda2), "lambda3", round2(lambda3));
+    public Calculator(List<Double> coefficientsA) {
+        this.a11 = coefficientsA.get(0);
+        this.a12 = coefficientsA.get(1);
+        this.a13 = coefficientsA.get(2);
+        this.a14 = coefficientsA.get(3);
+        this.a22 = coefficientsA.get(4);
+        this.a23 = coefficientsA.get(5);
+        this.a24 = coefficientsA.get(6);
+        this.a33 = coefficientsA.get(7);
+        this.a34 = coefficientsA.get(8);
+        this.a44 = coefficientsA.get(9);
     }
 
-    private void fillMatrices() {
-        matrix4 = new double[][] {
-                {coefficients.get("a11"), coefficients.get("a12"), coefficients.get("a13"), coefficients.get("a14")},
-                {coefficients.get("a12"), coefficients.get("a22"), coefficients.get("a23"), coefficients.get("a24")},
-                {coefficients.get("a13"), coefficients.get("a23"), coefficients.get("a33"), coefficients.get("a34")},
-                {coefficients.get("a14"), coefficients.get("a24"), coefficients.get("a34"), coefficients.get("a44")}
-        };
-        matrix3 = Matrix.getMinor(matrix4, 3, 3);
+    public ValuesStorage calculateValues() {
+        calculateI();
+        calculateK();
+        calculateLambdas();
+
+        return new ValuesStorage(I1, I2, I3, I4, K2, K3, lambda1, lambda2, lambda3);
     }
 
-    private void defineI() {
-        I1 = matrix4[0][0] + matrix4[1][1] + matrix4[2][2];
-        I2 = Matrix.getDeterminant(Matrix.getMinor(matrix3, 2, 2))
-                + Matrix.getDeterminant(Matrix.getMinor(matrix3, 0, 0))
-                + Matrix.getDeterminant(Matrix.getMinor(matrix3, 1, 1));
-        I3 = Matrix.getDeterminant(matrix3);
-        I4 = Matrix.getDeterminant(matrix4);
+
+    private void calculateI() {
+        Matrix matrix4by4 = getMatrix4by4();
+        Matrix matrix3by3 = matrix4by4.getMinor(3, 3);
+
+        I1 = a11 + a22 + a33;
+        I2 = matrix3by3.getMinor(0, 0).getDeterminant()
+                + matrix3by3.getMinor(1, 1).getDeterminant()
+                + matrix3by3.getMinor(2, 2).getDeterminant();
+        I3 = matrix3by3.getDeterminant();
+        I4 = matrix4by4.getDeterminant();
     }
 
-    private void defineK() {
-        K2 = Matrix.getDeterminant(new double[][] {
-                    {coefficients.get("a11"), coefficients.get("a14")},
-                    {coefficients.get("a14"), coefficients.get("a44")}})
+    private void calculateK() {
+        Matrix matrix4by4 = getMatrix4by4();
 
-                + Matrix.getDeterminant(new double[][] {
-                        {coefficients.get("a22"), coefficients.get("a24")},
-                        {coefficients.get("a24"), coefficients.get("a44")}})
+        K2 = matrix4by4.getMinor(1, 1).getMinor(0, 0).getDeterminant()
+                +  matrix4by4.getMinor(2, 2).getMinor(0, 0).getDeterminant()
+                +  matrix4by4.getMinor(2, 2).getMinor(1, 1).getDeterminant();
 
-                + Matrix.getDeterminant(new double[][] {
-                        {coefficients.get("a33"), coefficients.get("a34")},
-                        {coefficients.get("a34"), coefficients.get("a44")}});
-
-        K3 = Matrix.getDeterminant(Matrix.getMinor(matrix4, 2, 2))
-                + Matrix.getDeterminant(Matrix.getMinor(matrix4, 0, 0))
-                + Matrix.getDeterminant(Matrix.getMinor(matrix4, 1, 1));
+        K3 = matrix4by4.getMinor(0, 0).getDeterminant()
+                + matrix4by4.getMinor(1, 1).getDeterminant()
+                + matrix4by4.getMinor(2, 2).getDeterminant();
     }
 
-    private void calcLambdas() {
+    private void calculateLambdas() {
         CubicEquationSolver cubicEquationSolver = new CubicEquationSolver();
         List<Double> cubicRoots = cubicEquationSolver.solve(1, -I1, I2, -I3);
 
@@ -72,12 +68,13 @@ public class Calculator {
         }
     }
 
-    private double round2(double value) {
-        value = Math.round(value * 100);
-        return value / 100;
-    }
+    private Matrix getMatrix4by4() {
+        double[][] matrixAsArray = new double[][] {
+                {a11, a12, a13, a14},
+                {a12, a22, a23, a24},
+                {a13, a23, a33, a34},
+                {a14, a24, a34, a44}};
 
-    public void setCoefficients(Map<String, Double> coefficients) {
-        this.coefficients = coefficients;
+        return new Matrix(matrixAsArray);
     }
 }
