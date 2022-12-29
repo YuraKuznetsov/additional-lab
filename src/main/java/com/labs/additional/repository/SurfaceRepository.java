@@ -1,6 +1,7 @@
 package com.labs.additional.repository;
 
 import com.labs.additional.model.Surface;
+import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class SurfaceRepository {
     private final static String filePath = "src/main/resources/storage/surfaces_info.txt";
 

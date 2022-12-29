@@ -2,6 +2,7 @@ package com.labs.additional.controller;
 
 import com.labs.additional.model.Surface;
 import com.labs.additional.service.surface.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,12 @@ import java.util.Map;
 @Controller
 @RequestMapping("/surface")
 public class SurfaceController {
+    SurfaceService surfaceService;
 
-    SurfaceService surfaceService = new SurfaceService();
+    @Autowired
+    public SurfaceController(SurfaceService surfaceService) {
+        this.surfaceService = surfaceService;
+    }
 
     @GetMapping("/")
     public String index() {

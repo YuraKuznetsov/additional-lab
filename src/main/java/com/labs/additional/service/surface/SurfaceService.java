@@ -4,16 +4,26 @@ import com.labs.additional.model.Surface;
 import com.labs.additional.repository.SurfaceRepository;
 import com.labs.additional.service.surface.calculations.Calculator;
 import com.labs.additional.service.surface.type.WideSurfaceType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class SurfaceService {
-    private final SurfaceRepository repository = new SurfaceRepository();
-    private final Calculator calculator = new Calculator();
-    private final TypeFounder typeFounder = new TypeFounder();
+    private final SurfaceRepository repository;
+    private final Calculator calculator;
+    private final TypeFounder typeFounder;
+
+    @Autowired
+    public SurfaceService(SurfaceRepository repository) {
+        this.repository = repository;
+        this.calculator = new Calculator();
+        this.typeFounder = new TypeFounder();
+    }
 
     public String getUserEquation(Map<String, String> request) {
         return EquationGenerator.generateUserEquation(request);
