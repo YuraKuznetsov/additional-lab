@@ -1,10 +1,25 @@
 package com.labs.additional.service.surface.calculations;
 
+import com.labs.additional.excepiton.MinorIsNotExistException;
+
+import java.util.Arrays;
+
 public class Matrix {
+    private final double[][] matrix;
+    private final int dimension;
 
-    public static double getDeterminant(double[][] matrix) {
-        final int dimension = matrix.length;
+    public Matrix(double[][] matrix) {
+        this.dimension = matrix[0].length;
+        this.matrix = new double[dimension][dimension];
 
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
+                this.matrix[i][j] = matrix[i][j];
+            }
+        }
+    }
+
+    public double getDeterminant() {
         if (dimension == 1) {
             return matrix[0][0];
         }
@@ -13,28 +28,31 @@ public class Matrix {
         int sign = 1;
 
         for (int j = 0; j < dimension; j++) {
-            double[][] minor = Matrix.getMinor(matrix, 0, j);
-            determinant += sign * matrix[0][j] * getDeterminant(minor);
+            Matrix minor = getMinor(0, j);
+            determinant += sign * matrix[0][j] * minor.getDeterminant();
             sign = -sign;
         }
 
         return determinant;
     }
 
-    public static double[][] getMinor(double[][] matrix, int elRow, int elCol) {
-        final int matrixDim = matrix.length;
-        final int minorDim = matrixDim - 1;
+    public Matrix getMinor(int elRow, int elCol) {
+        if (dimension < 2) {
+            throw new MinorIsNotExistException("Can't generate minor of matrix which dimension less than 2");
+        }
 
-        double[][] minor = new double[minorDim][matrixDim];
+        final int minorDimension = dimension - 1;
+
+        double[][] minor = new double[minorDimension][minorDimension];
 
         int currentRow = 0, currentCol = 0;
 
-        for (int i = 0; i < matrixDim; i++) {
-            for (int j = 0; j < matrixDim; j++) {
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
                 if (i != elRow && j != elCol) {
                     minor[currentRow][currentCol++] = matrix[i][j];
 
-                    if (currentCol == matrixDim - 1) {
+                    if (currentCol == dimension - 1) {
                         currentCol = 0;
                         currentRow++;
                     }
@@ -42,6 +60,16 @@ public class Matrix {
             }
         }
 
-        return minor;
+        return new Matrix(minor);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Matrix matrix1 = (Matrix) o;
+
+        return Arrays.deepEquals(matrix, matrix1.matrix);
     }
 }
