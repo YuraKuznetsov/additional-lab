@@ -3,7 +3,7 @@ package com.labs.additional.service.surface.calculations;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CubicEquationSolver {
+public class CubicEquation {
     private double d, a, b, c;
     private double p, q, D;
     private double x1, x2, x3;
@@ -56,6 +56,7 @@ public class CubicEquationSolver {
     private void findRootsWithZeroDeterminant() {
         x1 = -2 * Math.cbrt(q / 2) - a / 3;
         x2 = Math.cbrt(q / 2) - a / 3;
+        x3 = x2;
     }
 
     private void findRootsWithNegativeDeterminant() {
