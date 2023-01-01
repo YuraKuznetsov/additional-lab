@@ -1,10 +1,10 @@
-package com.labs.additional.service.surface.calculations;
+package com.labs.additional.service.surface.calculation;
 
-public class EquationCoefficients {
+public class CoefficientsA {
     private final double a11, a12, a13, a14, a22, a23, a24, a33, a34, a44;
 
-    public EquationCoefficients(double a11, double a12, double a13, double a14, double a22,
-                                double a23, double a24, double a33, double a34, double a44) {
+    public CoefficientsA(double a11, double a12, double a13, double a14, double a22,
+                         double a23, double a24, double a33, double a34, double a44) {
         this.a11 = a11;
         this.a12 = a12;
         this.a13 = a13;
