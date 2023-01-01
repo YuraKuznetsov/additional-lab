@@ -1,4 +1,4 @@
-package com.labs.additional.service.surface.calculations;
+package com.labs.additional.service.surface.calculation;
 
 import com.labs.additional.excepiton.MinorIsNotExistException;
 import org.junit.jupiter.api.Test;

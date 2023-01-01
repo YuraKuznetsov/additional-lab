@@ -1,19 +1,19 @@
-package com.labs.additional.service.surface.calculations;
+package com.labs.additional.service.surface.calculation;
 
-import com.labs.additional.service.surface.calculations.equation.cubic.CubicRoots;
+import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 
 public class SurfaceValues {
     private final double I1, I2, I3, I4, K2, K3;
-    private final CubicRoots lambdas;
+    private final CubicRoots cubicRoots;
 
-    public SurfaceValues(double I1, double I2, double I3, double I4, double K2, double K3, CubicRoots lambdas) {
+    public SurfaceValues(double I1, double I2, double I3, double I4, double K2, double K3, CubicRoots cubicRoots) {
         this.I1 = I1;
         this.I2 = I2;
         this.I3 = I3;
         this.I4 = I4;
         this.K2 = K2;
         this.K3 = K3;
-        this.lambdas = lambdas;
+        this.cubicRoots = cubicRoots;
     }
 
     public double getI1() {
@@ -40,7 +40,7 @@ public class SurfaceValues {
         return K3;
     }
 
-    public CubicRoots getLambdas() {
-        return lambdas;
+    public CubicRoots getCubicRoots() {
+        return cubicRoots;
     }
 }

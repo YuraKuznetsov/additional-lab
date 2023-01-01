@@ -1,7 +1,7 @@
-package com.labs.additional.service.surface.calculations;
+package com.labs.additional.service.surface.calculation;
 
-import com.labs.additional.service.surface.calculations.equation.cubic.CubicEquation;
-import com.labs.additional.service.surface.calculations.equation.cubic.CubicRoots;
+import com.labs.additional.service.surface.calculation.equation.cubic.CubicEquation;
+import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 
 public class SurfaceCalculator {
     private CoefficientsA coefficients;

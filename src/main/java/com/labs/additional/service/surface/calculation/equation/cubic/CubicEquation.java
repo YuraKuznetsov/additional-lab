@@ -1,4 +1,4 @@
-package com.labs.additional.service.surface.calculations.equation.cubic;
+package com.labs.additional.service.surface.calculation.equation.cubic;
 
 import com.labs.additional.excepiton.IsNotCubicEquationException;
 

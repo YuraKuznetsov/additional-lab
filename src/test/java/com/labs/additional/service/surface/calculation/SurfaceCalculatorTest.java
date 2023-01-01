@@ -1,6 +1,6 @@
-package com.labs.additional.service.surface.calculations;
+package com.labs.additional.service.surface.calculation;
 
-import com.labs.additional.service.surface.calculations.equation.cubic.CubicRoots;
+import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
@@ -27,7 +27,7 @@ class SurfaceCalculatorTest {
         assertEquals(0, surfaceValues.getK2());
         assertEquals(0, surfaceValues.getK3());
 
-        CubicRoots lambdas = surfaceValues.getLambdas();
+        CubicRoots lambdas = surfaceValues.getCubicRoots();
         Optional<Double> lambda1 = lambdas.getRoot1();
         Optional<Double> lambda2 = lambdas.getRoot2();
         Optional<Double> lambda3 = lambdas.getRoot3();
@@ -57,7 +57,7 @@ class SurfaceCalculatorTest {
         assertEquals(-1, surfaceValues.getK2());
         assertEquals(2, surfaceValues.getK3());
 
-        CubicRoots lambdas = surfaceValues.getLambdas();
+        CubicRoots lambdas = surfaceValues.getCubicRoots();
         Optional<Double> lambda1 = lambdas.getRoot1();
         Optional<Double> lambda2 = lambdas.getRoot2();
         Optional<Double> lambda3 = lambdas.getRoot3();
