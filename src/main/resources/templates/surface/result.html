@@ -31,44 +31,44 @@
                 <div class="table__body">
                     <div class="body-left">
                         Введене рівняння: <br>
-                        <span class="important" th:text="${userEquation}"></span>
+                        <span class="important" th:text="${surface}"></span>
                         <br><br>
 
                         Розрахуємо I та K: <br>
-                        I<span class="small">1</span> = <span th:text="${values.I1}"></span>;
-                        I<span class="small">2</span> = <span th:text="${values.I2}"></span>;
-                        I<span class="small">3</span> = <span th:text="${values.I3}"></span>;
-                        I<span class="small">4</span> = <span th:text="${values.I4}"></span>;
+                        I<span class="small">1</span> = <span th:text="${surface.values.I1}"></span>;
+                        I<span class="small">2</span> = <span th:text="${surface.values.I2}"></span>;
+                        I<span class="small">3</span> = <span th:text="${surface.values.I3}"></span>;
+                        I<span class="small">4</span> = <span th:text="${surface.values.I4}"></span>;
                         <br>
-                        K<span class="small">2</span> = <span th:text="${values.K2}"></span>;
-                        K<span class="small">3</span> = <span th:text="${values.K3}"></span>;
+                        K<span class="small">2</span> = <span th:text="${surface.values.K2}"></span>;
+                        K<span class="small">3</span> = <span th:text="${surface.values.K3}"></span>;
                         <br><br>
         
                         Розв'яжемо кубічне рівняння: <br>
-                        <span th:text="${cubicEquation}"></span> <br>
-                        λ<span class="small">1</span> = <span th:text="${values.lambda1}"></span>;
-                        λ<span class="small">2</span> = <span th:text="${values.lambda2}"></span>;
-                        λ<span class="small">3</span> = <span th:text="${values.lambda3}"></span>
+                        <span th:text="${surface}"></span> <br>
+                        λ<span class="small">1</span> = <span th:text="${surface.values.getCubicRoots().getRoot1()}"></span>;
+                        λ<span class="small">2</span> = <span th:text="${surface.values.getCubicRoots().getRoot2()}"></span>;
+                        λ<span class="small">3</span> = <span th:text="${surface.values.getCubicRoots().getRoot3()}"></span>
                         <br><br>
 
-                        <span th:text="${canonicalExplain}"></span> <br>
-                        <span th:text="${canonicalFormula}"></span>
+                        <span th:text="${surface}"></span> <br>
+                        <span th:text="${surface}"></span>
                         <br><br>
 
                         Підставимо змінні: <br>
-                        <span th:text="${simpleCanonicalEquation}"></span>
+                        <span th:text="${surface}"></span>
                         <br><br>
 
                         Скоротимо та отримаємо звичне канонічне рівняння: <br>
-                        <span class="important" th:text="${canonicalEquation}"></span>
+                        <span class="important" th:text="${surface}"></span>
                         <br><br>
                         
-                        Тип поверхні: <span class="answer" th:text="${surfaceType}"></span>
+                        Тип поверхні: <span class="answer" th:text="${surface.type}"></span>
                     </div>
 
                     <div class="body-right">
                         <div class="image-box">
-                            <img th:src="${imgSrc}" />
+                            <img src="/images/surfaces/Hyperbolic_Cylinder.png" />
                         </div>
                     </div>
                 </div>
@@ -89,5 +89,6 @@
         </div>
     </footer>
 </div>
+<script type="text/javascript" th:src="@{/js/surface/result.js}"></script>
 </body>
 </html>
