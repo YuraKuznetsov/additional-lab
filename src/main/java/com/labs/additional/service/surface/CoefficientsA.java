@@ -1,4 +1,4 @@
-package com.labs.additional.service.surface.calculation;
+package com.labs.additional.service.surface;
 
 public class CoefficientsA {
     private final double a11, a12, a13, a14, a22, a23, a24, a33, a34, a44;
