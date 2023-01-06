@@ -1,4 +1,4 @@
-package com.labs.additional.service.surface;
+package com.labs.additional.model;
 
 import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 

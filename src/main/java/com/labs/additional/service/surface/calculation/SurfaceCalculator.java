@@ -1,5 +1,7 @@
 package com.labs.additional.service.surface.calculation;
 
+import com.labs.additional.model.CoefficientsA;
+import com.labs.additional.model.SurfaceValues;
 import com.labs.additional.service.surface.calculation.equation.cubic.CubicEquation;
 import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 
@@ -16,7 +18,6 @@ public class SurfaceCalculator {
 
         return new SurfaceValues(I1, I2, I3, I4, K2, K3, lambdas);
     }
-
 
     private void calculateI() {
         Matrix matrix4by4 = getMatrix4by4();

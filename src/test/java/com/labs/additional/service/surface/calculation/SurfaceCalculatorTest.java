@@ -1,5 +1,7 @@
 package com.labs.additional.service.surface.calculation;
 
+import com.labs.additional.model.CoefficientsA;
+import com.labs.additional.model.SurfaceValues;
 import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 import org.junit.jupiter.api.Test;
 

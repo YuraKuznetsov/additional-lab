@@ -1,7 +1,7 @@
 package com.labs.additional.service.surface.type;
 
 import com.labs.additional.excepiton.LambdaIsNotPresentException;
-import com.labs.additional.service.surface.calculation.SurfaceValues;
+import com.labs.additional.model.SurfaceValues;
 import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 
 public class SurfaceTypeFounder {
