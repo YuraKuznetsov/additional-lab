@@ -2,7 +2,7 @@ package com.labs.additional.dto.mapper;
 
 import com.labs.additional.dto.SurfaceDTO;
 import com.labs.additional.model.Surface;
-import com.labs.additional.service.surface.CoefficientsA;
+import com.labs.additional.model.CoefficientsA;
 
 import java.util.Map;
 

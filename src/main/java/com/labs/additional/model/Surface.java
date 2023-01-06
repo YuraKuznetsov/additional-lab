@@ -1,81 +1,36 @@
 package com.labs.additional.model;
 
-import java.util.Map;
+import com.labs.additional.service.surface.type.SurfaceType;
+import com.labs.additional.service.surface.type.WideSurfaceType;
 
 public class Surface {
-    private final String userEquation;
-    private final Map<String, Double> values;  // I and K
-    private final String cubicEquation;
-    private final String canonicalEquationExplain;
-    private final String canonicalEquationFormula;
-    private final String simpleCanonicalEquation;
-    private final String canonicalEquation;
-    private final String surfaceType;
-    private final String imgSrc;
+    public final CoefficientsA coefficientsA;
+    public final SurfaceValues values;
+    public final WideSurfaceType wideType;
+    public final SurfaceType type;
 
-    public Surface(String userEquation, Map<String, Double> values, String cubicEquation,
-                   String canonicalEquationExplain, String canonicalEquationFormula, String simpleCanonicalEquation,
-                   String canonicalEquation, String surfaceType, String imgSrc) {
+    public Surface(CoefficientsA coefficientsA, SurfaceValues values,
+                   WideSurfaceType wideType, SurfaceType type) {
 
-        this.userEquation = userEquation;
+        this.coefficientsA = coefficientsA;
         this.values = values;
-        this.cubicEquation = cubicEquation;
-        this.canonicalEquationExplain = canonicalEquationExplain;
-        this.canonicalEquationFormula = canonicalEquationFormula;
-        this.simpleCanonicalEquation = simpleCanonicalEquation;
-        this.canonicalEquation = canonicalEquation;
-        this.surfaceType = surfaceType;
-        this.imgSrc = imgSrc;
+        this.wideType = wideType;
+        this.type = type;
     }
 
-    public String getUserEquation() {
-        return userEquation;
+    public CoefficientsA getCoefficientsA() {
+        return coefficientsA;
     }
 
-    public Map<String, Double> getValues() {
+    public SurfaceValues getValues() {
         return values;
     }
 
-    public String getCubicEquation() {
-        return cubicEquation;
+    public WideSurfaceType getWideType() {
+        return wideType;
     }
 
-    public String getCanonicalEquationExplain() {
-        return canonicalEquationExplain;
-    }
-
-    public String getCanonicalEquationFormula() {
-        return canonicalEquationFormula;
-    }
-
-    public String getSimpleCanonicalEquation() {
-        return simpleCanonicalEquation;
-    }
-
-    public String getCanonicalEquation() {
-        return canonicalEquation;
-    }
-
-    public String getSurfaceType() {
-        return surfaceType;
-    }
-
-    public String getImgSrc() {
-        return imgSrc;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Surface surface = (Surface) o;
-
-        return userEquation.equals(surface.userEquation);
-    }
-
-    @Override
-    public int hashCode() {
-        return userEquation.hashCode();
+    public SurfaceType getType() {
+        return type;
     }
 }

@@ -1,6 +1,6 @@
 package com.labs.additional.dto;
 
-import com.labs.additional.service.surface.CoefficientsA;
+import com.labs.additional.model.CoefficientsA;
 
 import java.util.Map;
 
