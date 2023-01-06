@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,44 +31,41 @@
                 <div class="table__body">
                     <div class="body-left">
                         Введене рівняння: <br>
-                        <span class="important" th:text="${surface}"></span>
-                        <br><br>
+                        <div id="userEquation" class="important">userEquation</div>
+                        <br>
+
+                        Коефіцієнти а
+                        <div id="coefficientsA"></div>
+                        <br>
 
                         Розрахуємо I та K: <br>
-                        I<span class="small">1</span> = <span th:text="${surface.values.I1}"></span>;
-                        I<span class="small">2</span> = <span th:text="${surface.values.I2}"></span>;
-                        I<span class="small">3</span> = <span th:text="${surface.values.I3}"></span>;
-                        I<span class="small">4</span> = <span th:text="${surface.values.I4}"></span>;
+                        <div id="informationI"></div>
+                        <div id="informationK"></div>
                         <br>
-                        K<span class="small">2</span> = <span th:text="${surface.values.K2}"></span>;
-                        K<span class="small">3</span> = <span th:text="${surface.values.K3}"></span>;
-                        <br><br>
         
                         Розв'яжемо кубічне рівняння: <br>
-                        <span th:text="${surface}"></span> <br>
-                        λ<span class="small">1</span> = <span th:text="${surface.values.getCubicRoots().getRoot1()}"></span>;
-                        λ<span class="small">2</span> = <span th:text="${surface.values.getCubicRoots().getRoot2()}"></span>;
-                        λ<span class="small">3</span> = <span th:text="${surface.values.getCubicRoots().getRoot3()}"></span>
-                        <br><br>
+                        <div id="cubicEquation"></div>
+                        <div id="lambdasInfo"></div>
+                        <br>
 
-                        <span th:text="${surface}"></span> <br>
-                        <span th:text="${surface}"></span>
-                        <br><br>
+                        <div id="explain"></div>
+                        <div id="canonicalFormula"></div>
+                        <br>
 
                         Підставимо змінні: <br>
-                        <span th:text="${surface}"></span>
-                        <br><br>
+                        <div id="simpleCanonical"></div>
+                        <br>
 
                         Скоротимо та отримаємо звичне канонічне рівняння: <br>
-                        <span class="important" th:text="${surface}"></span>
-                        <br><br>
-                        
-                        Тип поверхні: <span class="answer" th:text="${surface.type}"></span>
+                        <div id="canonical" class="important"></div><br>
+
+                        Тип поверхні: <br>
+                        <div id="surfaceType" class="important"></div>
                     </div>
 
                     <div class="body-right">
                         <div class="image-box">
-                            <img src="/images/surfaces/Hyperbolic_Cylinder.png" />
+                            <img id="surface-graph" alt="surface-graph" src=""/>
                         </div>
                     </div>
                 </div>
@@ -89,6 +86,9 @@
         </div>
     </footer>
 </div>
+<script th:inline="javascript">
+    const surface = /*[[${surface}]]*/ "";
+</script>
 <script type="text/javascript" th:src="@{/js/surface/result.js}"></script>
 </body>
 </html>
