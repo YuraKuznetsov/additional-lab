@@ -23,36 +23,7 @@
     <main>
         <div class="container">
             <h1 class="title">Усі визначені та збережені поверхні</h1>
-
-            <div id="react-block"></div>
-
-            <!--
-            <div class="surfaces-list">
-                <div class="surface" th:each="surface : ${surfaces}">
-                    <div class="surface__header">
-                        <div class="surface__equation">
-                            <span th:text="${surface.coefficientsA().getA11()}"></span>
-                        </div>
-                        <div class="surface__icon"><i class="fa-solid fa-caret-down"></i></div>
-                    </div>
-                    <div class="surface__body">
-                        <div class="surface__info">
-                            <div class="surface__canonical">
-                                Канонічне рівняння: <br>
-                                <span th:text="${surface}"></span>
-                            </div>
-                            <div class="surface__type">
-                                Тип поверхні: <br>
-                                <span th:text="${surface.type}"></span>
-                            </div>
-                        </div>
-                        <div class="surface__image">
-                            <img th:src="${surface}" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            -->
+            <div id="list" class="surfaces-list"></div>
         </div>
     </main>
     <footer class="footer">
@@ -66,14 +37,8 @@
     </footer>
 </div>
 <script th:inline="javascript">
-    const allSurfaces = /*[[${surfaces}]]*/ "";
+    const allSurfaces = /*[[${surfaceList}]]*/ "";
 </script>
 <script type="text/javascript" th:src="@{/js/surface/results.js}"></script>
-
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-
-<!-- Load our React component. -->
-<script type="text/javascript" th:src="@{/js/surface/surfaces_list.js}"></script>
 </body>
 </html>
