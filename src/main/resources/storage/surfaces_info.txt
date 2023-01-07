@@ -1,6 +1,0 @@
-1x² + 5y² + 7z² + 18xy + 4xz + 97yz + 14x + 1y + 12z + 7 = 0,0.008x² + -0.69y² + 0.891z² = 1,Гіперболоїд однолистовий,/images/surfaces/Hyperboloid_1.png
-- 9x² - 4y² - 7z² + 5xz - 6yz - 6x - 6y + 8z + 3 = 0,0.516x² + 0.828y² + 0.139z² = 1,Уявний еліпсоїд,/images/surfaces/Ellipsoid.png
-7x² + 8y² + 6z² - 9xy + 8xz - 2yz - 6x + 7y - 6z = 0,2.158x² + 0.522y² + 4.989z² = 1,Еліпсоїд,/images/surfaces/Ellipsoid.png
-- 10x² + 4y² - 10z² - 2xy - 9xz - 7yz + 7x - 7y + 7z + 1 = 0,-4.44x² + -11.532y² + 3.704z² = 1,Гіперболоїд дволистовий,/images/surfaces/Hyperboloid_2.png
-6x² + 8y² + 5z² + 6xy + 4xz - 3yz + 1x - 8y - 5z + 2 = 0,1.107x² + 0.293y² + 1.611z² = 1,Еліпсоїд,/images/surfaces/Ellipsoid.png
-7x² + 3y² + 5z² + 5xy - 4xz + 2yz + 4x + 5y - 3z + 5 = 0,-5.029x² + -0.927y² + -8.384z² = 1,Уявний еліпсоїд,/images/surfaces/Ellipsoid.png

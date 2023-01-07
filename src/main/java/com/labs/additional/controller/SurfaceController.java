@@ -1,5 +1,6 @@
 package com.labs.additional.controller;
 
+import com.labs.additional.dto.mapper.SurfaceMapper;
 import com.labs.additional.model.Surface;
 import com.labs.additional.service.surface.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,9 +30,7 @@ public class SurfaceController {
 
     @GetMapping("/results")
     public String results(Model model) {
-        List<Surface> surfaces = surfaceService.getAllSurfaces();
-        model.addAttribute("surfaces", surfaces);
-
+        model.addAttribute("surfaces", surfaceService.getAllSurfaces());
         return "surface/results";
     }
 
@@ -47,33 +45,12 @@ public class SurfaceController {
     }
 
     @PostMapping("/result")
-    public String result(@RequestParam Map<String, String> request, Model model) {
-        SurfaceValidator validator = new SurfaceValidator(request);
-        if (!validator.isCorrectRequest()) {
-            return "surface/resultErrorPage";
-        }
+    public String result(@RequestParam Map<String, String> equationCoefficients, Model model) {
+        Surface surface = surfaceService.defineSurface(equationCoefficients);
+        surfaceService.saveSurface(surface);
 
-        String userEquation = surfaceService.getUserEquation(request);
-        Map<String, Double> importantValues = surfaceService.getImportantValues(request);
-        String cubicEquation = surfaceService.getCubicEquation(request);
-        String canonicalExplain = surfaceService.getCanonicalExplain(request);
-        String canonicalFormula = surfaceService.getCanonicalFormula(request);
-        String simpleCanonicalEquation = surfaceService.getSimpleCanonical(request);
-        String canonicalEquation = surfaceService.getCanonicalEquation(request);
-        String surfaceType = surfaceService.getType(request);
-        String imgSrc = surfaceService.getImgSrc(request);
-
-        model.addAttribute("userEquation", userEquation);
-        model.addAttribute("values", importantValues);
-        model.addAttribute("cubicEquation", cubicEquation);
-        model.addAttribute("canonicalExplain", canonicalExplain);
-        model.addAttribute("canonicalFormula", canonicalFormula);
-        model.addAttribute("simpleCanonicalEquation", simpleCanonicalEquation);
-        model.addAttribute("canonicalEquation", canonicalEquation);
-        model.addAttribute("surfaceType", surfaceType);
-        model.addAttribute("imgSrc", imgSrc);
-
-        surfaceService.saveSurface(new Surface(userEquation, canonicalEquation, surfaceType, imgSrc));
+        SurfaceMapper surfaceMapper = new SurfaceMapper();
+        model.addAttribute("surface", surfaceMapper.getSurfaceDTO(surface));
 
         return "surface/result";
     }
