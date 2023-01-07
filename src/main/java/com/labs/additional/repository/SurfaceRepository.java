@@ -1,6 +1,11 @@
 package com.labs.additional.repository;
 
 import com.labs.additional.model.Surface;
+import com.labs.additional.model.CoefficientsA;
+import com.labs.additional.model.SurfaceValues;
+import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
+import com.labs.additional.service.surface.type.SurfaceType;
+import com.labs.additional.service.surface.type.WideSurfaceType;
 import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
@@ -14,32 +19,51 @@ public class SurfaceRepository {
     private final String filePath = "src/main/resources/storage/surfaces_info.txt";
 
     public void saveSurface(Surface surface) throws IOException {
-        String surfaceInformationRow = generateSurfaceInformationRow(surface);
+        String surfaceInformationRow = surfaceToString(surface);
         appendRow(surfaceInformationRow);
     }
 
-    private String generateSurfaceInformationRow(Surface surface) {
-        String userEquation = surface.getUserEquation();
-        String valuesAsString = mapToString(surface.getValues());
-        String cubicEquation = surface.getCubicEquation();
-        String canonicalEquationExplain = surface.getCanonicalEquationExplain();
-        String canonicalEquationFormula = surface.getCanonicalEquationFormula();
-        String simpleCanonicalEquation = surface.getSimpleCanonicalEquation();
-        String canonicalEquation = surface.getCanonicalEquation();
-        String surfaceType = surface.getSurfaceType();
-        String imgSrc = surface.getImgSrc();
+    private String surfaceToString(Surface surface) {
+        String coefficientsAsString = coefficientsAToString(surface.getCoefficientsA());
+        String valuesAsString = surfaceValuesToString(surface.getValues());
 
         return String.format(
-                "%s;%s;%s;%s;%s;%s;%s;%s;%s\n",
-                userEquation,
+                "%s;%s;%s;%s\n",
+                coefficientsAsString,
                 valuesAsString,
-                cubicEquation,
-                canonicalEquationExplain,
-                canonicalEquationFormula,
-                simpleCanonicalEquation,
-                canonicalEquation,
-                surfaceType,
-                imgSrc);
+                surface.getWideType(),
+                surface.getType());
+    }
+
+    private String coefficientsAToString(CoefficientsA coefficientsA) {
+        return String.format(
+                "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                coefficientsA.getA11(),
+                coefficientsA.getA12(),
+                coefficientsA.getA13(),
+                coefficientsA.getA14(),
+                coefficientsA.getA22(),
+                coefficientsA.getA23(),
+                coefficientsA.getA24(),
+                coefficientsA.getA33(),
+                coefficientsA.getA34(),
+                coefficientsA.getA44()
+        );
+    }
+
+    private String surfaceValuesToString(SurfaceValues values) {
+        return String.format(
+                "%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                values.getI1(),
+                values.getI2(),
+                values.getI3(),
+                values.getI4(),
+                values.getK2(),
+                values.getK3(),
+                values.getCubicRoots().getRoot1().orElse(0.0),
+                values.getCubicRoots().getRoot2().orElse(0.0),
+                values.getCubicRoots().getRoot3().orElse(0.0)
+        );
     }
 
     private void appendRow(String row) throws IOException {
@@ -67,33 +91,40 @@ public class SurfaceRepository {
     private Surface generateSurface(String line) {
         String[] surfaceInfo = line.split(";");
 
-        String userEquation = surfaceInfo[0];
-        Map<String, Double> values = stringToMap(surfaceInfo[1]);
-        String cubicEquation = surfaceInfo[2];
-        String canonicalEquationExplain = surfaceInfo[3];
-        String canonicalEquationFormula = surfaceInfo[4];
-        String simpleCanonicalEquation = surfaceInfo[5];
-        String canonicalEquation = surfaceInfo[6];
-        String surfaceType = surfaceInfo[7];
-        String imgSrc = surfaceInfo[8];
+        CoefficientsA coefficientsA = stringToCoefficientsA(surfaceInfo[0]);
+        SurfaceValues values = getSurfaceValues(surfaceInfo[1]);
+        WideSurfaceType wideType = WideSurfaceType.valueOf(surfaceInfo[2]);
+        SurfaceType type = SurfaceType.valueOf(surfaceInfo[3]);
 
-        return new Surface(userEquation, values, cubicEquation, canonicalEquationExplain,
-                           canonicalEquationFormula, simpleCanonicalEquation,
-                           canonicalEquation, surfaceType, imgSrc);
+        return new Surface(coefficientsA, values, wideType, type);
     }
 
-    private String mapToString(Map<String, Double> map) {
-        return map.keySet().stream()
-                .map(key -> key + "=" + map.get(key))
-                .collect(Collectors.joining(","));
+    private CoefficientsA stringToCoefficientsA(String string) {
+        String[] coefficients = string.split(",");
+
+        double a11 = Double.parseDouble(coefficients[0]);
+        double a12 = Double.parseDouble(coefficients[1]);
+        double a13 = Double.parseDouble(coefficients[2]);
+        double a14 = Double.parseDouble(coefficients[3]);
+        double a22 = Double.parseDouble(coefficients[4]);
+        double a23 = Double.parseDouble(coefficients[5]);
+        double a24 = Double.parseDouble(coefficients[6]);
+        double a33 = Double.parseDouble(coefficients[7]);
+        double a34 = Double.parseDouble(coefficients[8]);
+        double a44 = Double.parseDouble(coefficients[9]);
+
+        return new CoefficientsA(a11, a12, a13, a14, a22, a23, a24, a33, a34, a44);
     }
 
-    private Map<String, Double> stringToMap(String string) {
-        return Arrays.stream(string.split(","))
-                .map(entry -> entry.split("="))
-                .collect(Collectors.toMap(
-                        entry -> entry[0],
-                        entry -> Double.parseDouble(entry[1])
-                ));
+    private SurfaceValues getSurfaceValues(String string) {
+        List<Double> values = Arrays.stream(string.split(","))
+                .map(Double::parseDouble)
+                .collect(Collectors.toList());
+
+        CubicRoots lambdas = new CubicRoots(values.get(6), values.get(7), values.get(8));
+
+        return new SurfaceValues(
+                values.get(0), values.get(1), values.get(2), values.get(3),
+                values.get(4), values.get(5), lambdas);
     }
 }
