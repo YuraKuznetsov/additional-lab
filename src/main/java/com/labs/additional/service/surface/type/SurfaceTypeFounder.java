@@ -44,12 +44,11 @@ public class SurfaceTypeFounder {
     }
 
     private SurfaceType findFullSquareType() {
-        double lambda1 = cubicRoots.getRoot1().orElseThrow(
-                () -> new LambdaIsNotPresentException("lambda1 must be present in full squares"));
-        double lambda2 = cubicRoots.getRoot2().orElseThrow(
-                () -> new LambdaIsNotPresentException("lambda2 must be present in full squares"));
-        double lambda3 = cubicRoots.getRoot3().orElseThrow(
-                () -> new LambdaIsNotPresentException("lambda3 must be present in full squares"));
+        double lambda1 = cubicRoots.getRoot1();
+        double lambda2 = cubicRoots.getRoot2()
+                .orElseThrow(() -> new LambdaIsNotPresentException("lambda2 must be present in full squares"));
+        double lambda3 = cubicRoots.getRoot3()
+                .orElseThrow(() -> new LambdaIsNotPresentException("lambda3 must be present in full squares"));
 
         double sign1 = Math.signum(lambda1), sign2 = Math.signum(lambda2), sign3 = Math.signum(lambda3);
         boolean sameSign = ( (sign1 == sign2) && (sign1 == sign3) );
@@ -80,10 +79,9 @@ public class SurfaceTypeFounder {
     }
 
     private SurfaceType findParaboloidType() {
-        double lambda1 = cubicRoots.getRoot1().orElseThrow(
-                () -> new LambdaIsNotPresentException("lambda1 must be present in paraboloids"));
-        double lambda2 = cubicRoots.getRoot2().orElseThrow(
-                () -> new LambdaIsNotPresentException("lambda2 must be present in paraboloids"));
+        double lambda1 = cubicRoots.getRoot1();
+        double lambda2 = cubicRoots.getRoot2()
+                .orElseThrow(() -> new LambdaIsNotPresentException("lambda2 must be present in paraboloids"));
 
         if (Math.signum(lambda1) != Math.signum(lambda2)) return SurfaceType.HYPERBOLIC_PARABOLOID;
         if (lambda1 != lambda2) return SurfaceType.ELLIPTICAL_PARABOLOID;
@@ -91,10 +89,9 @@ public class SurfaceTypeFounder {
     }
 
     private SurfaceType findCylinderType() {
-        double lambda1 = cubicRoots.getRoot1().orElseThrow(
-                () -> new LambdaIsNotPresentException("lambda1 must be present in cylinders"));
-        double lambda2 = cubicRoots.getRoot2().orElseThrow(
-                () -> new LambdaIsNotPresentException("lambda2 must be present in cylinders"));
+        double lambda1 = cubicRoots.getRoot1();
+        double lambda2 = cubicRoots.getRoot2()
+                .orElseThrow(() -> new LambdaIsNotPresentException("lambda2 must be present in cylinders"));
 
         if (Math.signum(lambda1) != Math.signum(lambda2)) return SurfaceType.HYPERBOLIC_CYLINDER;
         if (lambda1 != lambda2) return SurfaceType.ELLIPTICAL_CYLINDER;

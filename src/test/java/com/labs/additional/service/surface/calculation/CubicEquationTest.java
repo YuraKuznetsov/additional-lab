@@ -27,11 +27,10 @@ class CubicEquationTest {
     void isEmpty_whenAllCubicCoefficientsAreZero() {
         CubicRoots cubicRoots = cubicEquation.calculateCubicRoots(1.0, 0.0, 0.0, 0.0);
 
-        assertTrue(cubicRoots.getRoot1().isPresent());
         assertTrue(cubicRoots.getRoot2().isPresent());
         assertTrue(cubicRoots.getRoot3().isPresent());
 
-        assertEquals(-0.0, cubicRoots.getRoot1().get());
+        assertEquals(-0.0, cubicRoots.getRoot1());
         assertEquals(0, cubicRoots.getRoot2().get());
         assertEquals(0, cubicRoots.getRoot3().get());
     }
@@ -43,11 +42,10 @@ class CubicEquationTest {
 
             CubicRoots cubicRoots = cubicEquation.calculateCubicRoots(1.0, I1, 0.0, 0.0);
 
-            assertTrue(cubicRoots.getRoot1().isPresent());
             assertTrue(cubicRoots.getRoot2().isPresent());
             assertTrue(cubicRoots.getRoot3().isPresent());
 
-            assertEquals(-I1, cubicRoots.getRoot1().get());
+            assertEquals(-I1, cubicRoots.getRoot1());
             assertEquals(0, cubicRoots.getRoot2().get());
             assertEquals(0, cubicRoots.getRoot3().get());
         }
@@ -58,7 +56,6 @@ class CubicEquationTest {
         final double I3 = 5.1;
         CubicRoots cubicRoots = cubicEquation.calculateCubicRoots(1.0, 13.4, -22.5, I3);
 
-        assertTrue(cubicRoots.getRoot1().isPresent());
         assertTrue(cubicRoots.getRoot2().isPresent());
         assertTrue(cubicRoots.getRoot3().isPresent());
     }

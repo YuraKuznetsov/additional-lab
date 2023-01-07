@@ -60,7 +60,7 @@ public class SurfaceRepository {
                 values.getI4(),
                 values.getK2(),
                 values.getK3(),
-                values.getCubicRoots().getRoot1().orElse(0.0),
+                values.getCubicRoots().getRoot1(),
                 values.getCubicRoots().getRoot2().orElse(0.0),
                 values.getCubicRoots().getRoot3().orElse(0.0)
         );

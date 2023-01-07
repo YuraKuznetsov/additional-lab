@@ -30,15 +30,14 @@ class SurfaceCalculatorTest {
         assertEquals(0, surfaceValues.getK3());
 
         CubicRoots lambdas = surfaceValues.getCubicRoots();
-        Optional<Double> lambda1 = lambdas.getRoot1();
+        Double lambda1 = lambdas.getRoot1();
         Optional<Double> lambda2 = lambdas.getRoot2();
         Optional<Double> lambda3 = lambdas.getRoot3();
 
-        assertTrue(lambda1.isPresent());
         assertTrue(lambda2.isPresent());
         assertTrue(lambda3.isPresent());
 
-        assertEquals(0, lambda1.get());
+        assertEquals(0, lambda1);
         assertEquals(0, lambda2.get());
         assertEquals(0, lambda3.get());
     }
@@ -60,15 +59,14 @@ class SurfaceCalculatorTest {
         assertEquals(2, surfaceValues.getK3());
 
         CubicRoots lambdas = surfaceValues.getCubicRoots();
-        Optional<Double> lambda1 = lambdas.getRoot1();
+        Double lambda1 = lambdas.getRoot1();
         Optional<Double> lambda2 = lambdas.getRoot2();
         Optional<Double> lambda3 = lambdas.getRoot3();
 
-        assertTrue(lambda1.isPresent());
         assertTrue(lambda2.isPresent());
         assertTrue(lambda3.isPresent());
 
-        assertEquals(1.69, lambda1.get());
+        assertEquals(1.69, lambda1);
         assertEquals(-3.69, lambda2.get());
         assertEquals(3, lambda3.get());
 
