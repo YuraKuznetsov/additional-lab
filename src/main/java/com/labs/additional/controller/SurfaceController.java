@@ -1,5 +1,6 @@
 package com.labs.additional.controller;
 
+import com.labs.additional.dto.SurfaceDTO;
 import com.labs.additional.dto.mapper.SurfaceMapper;
 import com.labs.additional.model.Surface;
 import com.labs.additional.service.surface.*;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/surface")
@@ -30,7 +33,14 @@ public class SurfaceController {
 
     @GetMapping("/results")
     public String results(Model model) {
-        model.addAttribute("surfaces", surfaceService.getAllSurfaces());
+        SurfaceMapper surfaceMapper = new SurfaceMapper();
+
+        List<Surface> surfaceList = surfaceService.getAllSurfaces();
+        List<SurfaceDTO> surfaceDTOList = surfaceList.stream()
+                .map(surfaceMapper::getSurfaceDTO)
+                .collect(Collectors.toList());
+
+        model.addAttribute("surfaceList", surfaceDTOList);
         return "surface/results";
     }
 
