@@ -39,6 +39,6 @@ for (let surface of surfaces) {
     new SurfaceMenu(surface).activate();
 }
 
-if (surfaces.length === 0) {
-    surfacesList.innerHTML = "Пусто... Ви ще не визначали жодної поверхні."
-}
+// if (surfaces.length === 0) {
+//     surfacesList.innerHTML = "Пусто... Ви ще не визначали жодної поверхні."
+// }
