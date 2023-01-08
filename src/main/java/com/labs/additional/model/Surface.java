@@ -33,4 +33,19 @@ public class Surface {
     public SurfaceType getType() {
         return type;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Surface surface = (Surface) o;
+
+        return coefficientsA.equals(surface.coefficientsA);
+    }
+
+    @Override
+    public int hashCode() {
+        return coefficientsA.hashCode();
+    }
 }

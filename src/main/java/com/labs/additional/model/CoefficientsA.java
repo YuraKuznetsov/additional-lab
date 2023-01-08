@@ -56,4 +56,50 @@ public class CoefficientsA {
     public double getA44() {
         return a44;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CoefficientsA that = (CoefficientsA) o;
+
+        if (Double.compare(that.a11, a11) != 0) return false;
+        if (Double.compare(that.a22, a22) != 0) return false;
+        if (Double.compare(that.a33, a33) != 0) return false;
+        if (Double.compare(that.a12, a12) != 0) return false;
+        if (Double.compare(that.a13, a13) != 0) return false;
+        if (Double.compare(that.a23, a23) != 0) return false;
+        if (Double.compare(that.a14, a14) != 0) return false;
+        if (Double.compare(that.a24, a24) != 0) return false;
+        if (Double.compare(that.a34, a34) != 0) return false;
+        return Double.compare(that.a44, a44) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(a11);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a22);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a33);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a12);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a13);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a23);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a14);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a24);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a34);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(a44);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }
