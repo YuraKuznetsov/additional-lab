@@ -29,4 +29,24 @@ public class CubicRoots {
     public Optional<Double> getRoot3() {
         return root3;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CubicRoots that = (CubicRoots) o;
+
+        if (!root1.equals(that.root1)) return false;
+        if (!root2.equals(that.root2)) return false;
+        return root3.equals(that.root3);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = root1.hashCode();
+        result = 31 * result + root2.hashCode();
+        result = 31 * result + root3.hashCode();
+        return result;
+    }
 }
