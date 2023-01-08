@@ -1,8 +1,6 @@
-package com.labs.additional.service.surface.calculation;
+package com.labs.additional.service.surface.calculation.equation.cubic;
 
 import com.labs.additional.excepiton.IsNotCubicEquationException;
-import com.labs.additional.service.surface.calculation.equation.cubic.CubicEquation;
-import com.labs.additional.service.surface.calculation.equation.cubic.CubicRoots;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -66,9 +66,13 @@ class SurfaceCalculatorTest {
         assertTrue(lambda2.isPresent());
         assertTrue(lambda3.isPresent());
 
-        assertEquals(1.69, lambda1);
-        assertEquals(-3.69, lambda2.get());
-        assertEquals(3, lambda3.get());
+        assertEquals(1.69, round2(lambda1));
+        assertEquals(-3.69, round2(lambda2.get()));
+        assertEquals(3, round2(lambda3.get()));
 
+    }
+
+    private double round2(double number) {
+        return Math.round(number * 100.0) / 100.0;
     }
 }

@@ -45,7 +45,39 @@ public class SurfaceCalculator {
 
     private void calculateLambdas() {
         CubicEquation cubicEquation = new CubicEquation();
-        lambdas = cubicEquation.calculateCubicRoots(1, -I1, I2, -I3);
+        CubicRoots cubicRoots = cubicEquation.calculateCubicRoots(1, -I1, I2, -I3);
+        lambdas = getLambdasRoots(cubicRoots);
+    }
+
+    private CubicRoots getLambdasRoots(CubicRoots cubicRoots) {
+        if (cubicRoots.getRoot2().isEmpty() && cubicRoots.getRoot3().isEmpty()) return cubicRoots;
+
+        double root1 = cubicRoots.getRoot1();
+        double root2 = cubicRoots.getRoot2().get();
+        double root3 = cubicRoots.getRoot3().get();
+
+        if (round3(root1) == 0d && round3(root2) == 0d) {
+            return new CubicRoots(root3, root1, root2);
+        }
+
+        if (round3(root1) != 0d && round3(root2) == 0 && round3(root3) != 0) {
+            return new CubicRoots(root1, root3, root2);
+        }
+
+        if (round3(root1) == 0d && round3(root2) != 0 && round3(root3) == 0) {
+            return new CubicRoots(root2, root1, root3);
+        }
+
+        if (round3(root1) == 0d && round3(root2) != 0 && round3(root3) != 0) {
+            return new CubicRoots(root2, root3, root1);
+        }
+
+        return cubicRoots;
+    }
+
+    private double round3(double value) {
+        value = Math.round(value * 1000);
+        return value / 1000;
     }
 
     private Matrix getMatrix4by4() {
